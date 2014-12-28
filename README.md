@@ -1,0 +1,3 @@
+# Professional JavaScript
+
+Workshop content.
