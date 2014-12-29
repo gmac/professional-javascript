@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>John Hammond's Mine</title>
+    <style>
+    body {
+      font: 16px/1.5 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      text-align: center;
+    }
+    img {
+      max-width: 80%;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>John Hammond's Mine</h1>
+    <img src="http://s11.postimg.org/r6lehfbvn/hammond_mine.png" alt="Hammond's Mine.">
+    <p>(use the javascript console)</p>
+
+    <script>
+      var mine = {
+        budgetYear: 1990,
+        donors: [
+          {
+            contribution: 1000000,
+            id: 7,
+            name: 'International Genetics, Inc.'
+          },
+          {
+            contribution: 500000,
+            id: 1,
+            name: 'John Hammond Foundation'
+          }
+        ],
+        digs: [
+          {
+            age: 'Jurassic',
+            budget: 250000,
+            continent: 'North America',
+            country: 'USA',
+            finds: [
+              {
+                genus: 'Stegosaurus',
+                specimens: 18
+              },
+              {
+                genus: 'Allosaurus',
+                specimens: 4
+              },
+              {
+                genus: 'Brachiosaurus',
+                specimens: 37
+              }
+            ],
+            id: 2,
+            isActive: true,
+            name: 'Bone Cabin Quarry, Wyoming'
+          },
+          {
+            age: 'Late Cretaceous',
+            budget: 500000,
+            continent: 'Africa',
+            country: 'Morocco',
+            finds: [
+              {
+                genus: 'Brachiosaurus',
+                specimens: 14
+              },
+              {
+                genus: 'Spinosaurus',
+                specimens: 1
+              }
+            ],
+            id: 7,
+            isActive: true,
+            name: 'Kem Kem Beds'
+          },
+          {
+            age: 'Cretaceous',
+            budget: 650000,
+            continent: 'North America',
+            country: 'Mexico',
+            finds: [
+              {
+                genus: 'Ceratopsia',
+                specimens: 7
+              },
+              {
+                genus: 'Pteraichnus',
+                specimens: 82
+              }
+            ],
+            id: 9,
+            isActive: false,
+            name: 'Cerro del Pueblo Formation'
+          }
+        ],
+        supervisor: 'Hammond, John'
+      };
+
+      // Write code to "console.log" out the following:
+
+
+      // 1) Number of dig sites worldwide.
+      console.log("Number of dig sites worldwide: ", mine.digs.length);
+
+
+
+      // 2) Total contributions given by donors.
+      var totalFunding = 0;
+
+      for (var i=0; i < mine.donors.length; i++) {
+        totalFunding += mine.donors[i].contribution;
+      }
+
+      console.log("Total contributions given by donors: ", totalFunding);
+
+
+
+      // 3) Number of ACTIVE dig sites worldwide.
+      var activeDigs = 0;
+
+      for (var i=0; i < mine.digs.length; i++) {
+        if (mine.digs[i].isActive) {
+          activeDigs += 1;
+        }
+      }
+
+      console.log("Number of ACTIVE dig sites worldwide: ", activeDigs);
+ 
+
+
+      // 4) Total number of finds in North America.
+      var findsInNA = 0;
+
+      for (var i=0; i < mine.digs.length; i++) {
+        if (mine.digs[i].continent === 'North America') {
+          findsInNA += mine.digs[i].finds.length;
+        }
+      }
+
+      console.log("Total number of finds in North America: ", findsInNA);
+
+
+
+      // 5) Total Brachiosaurus specimens found worldwide.
+      var brachsWorldwide = 0;
+
+      for (var i=0; i < mine.digs.length; i++) {
+        var dig = mine.digs[i];
+
+        for (var j=0; j < dig.finds.length; j++) {
+          if (dig.finds[j].genus === 'Brachiosaurus') {
+            brachsWorldwide += dig.finds[j].specimens;
+          }
+        }
+      }
+
+      console.log("Total Brachiosaurus specimens found worldwide: ", brachsWorldwide);
+
+    </script>
+  </body>
+</html>

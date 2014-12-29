@@ -38,6 +38,12 @@ JavaScript quickly gained universal adoption among web browsers, making it the u
  - **In Safari:**
  - **In Firefox:**
 
+To print messages into the JavaScript console, use `console.log()` within your JavaScript code:
+
+```
+console.log("Hello World!");
+```
+
 ---
 
 ## Comments

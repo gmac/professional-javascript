@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Name Generator</title>
+    <style>
+    body {
+      font: 16px/1.5 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      text-align: center;
+    }
+    img {
+      border: 1px solid #ccc;
+    }
+    #name-text {
+      background-color: #eee;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      display: inline-block;
+      font-size: 24px;
+      padding: 0.5em 1em;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>Name Generator</h1>
+    <p><img src="http://s3-ak.buzzfed.com/static/2013-09/campaign_images/webdr03/27/14/how-benedict-cumberbatch-and-alan-turing-helped-a-1-7116-1380307191-6_big.jpg" alt="Benedict Cumberbatch."></p>
+    <p><button id="name-bttn">Who Am I?</button></p>
+    <p id="name-text">Benedict Cumberbatch</p>
+
+    <script>
+    var firstNames = ["Bumblebee", "Banderscoop", "Paddington", "Broccoli", "Rinkydink", "Boilerduck", "Bandicoot", "Fragglerock", "Muffinmitts", "Crumplesack", "Fluffernutter", "Congleton", "Blubberbrains", "Buffalo", "Bonapard", "Butterfree", "Burberry", "Whippersnatch", "Buttermilk", "Beezlebub", "Budapest", "Boilerdang", "Blubberwhale", "Bumberstump", "Bulbasaur", "Cogglesnatch", "Liverswort", "Bodybuild", "Darkwing", "Burgerking", "Bonaparte", "Bunsenburner", "Billiardball", "Baseballmitt", "Blubberbett", "Baseballbat", "Rumblesack", "Barister", "Danglerack", "Chipndale", "Bombadil", "Honkytonk", "Billyray", "Bumbleshack", "Snorkeldink", "Hoobastank", "Anglerfish", "Beetlejuice", "Bedlington", "Bandicoot", "Boobytrap", "Bentobox", "Pallettown", "Wimbledon", "Hairyhog", "Buttercup", "Blasphemy", "Syphilis", "Snorkeldink", "Brandenburg", "Barbituate", "Snozzlebert", "Tiddleywomp", "Bouillabaisse", "Wellington", "Kingsly", "Benetton", "Bendandsnap", "Timothy", "Brewery", "Bentobox", "Brandybuck", "Pumpernickel"];
+    var lastNames = ["Coddlesnoot", "Curdleswort", "Calldispatch", "Humperdinck", "Rivendell", "Cuttlefish", "Lingerie", "Vegemite", "Ampersand", "Cumberbund", "Candycrush", "Clombyclomp", "Cragglethatch", "Nottinghill", "Cabbagepatch", "Camouflage", "Creamsicle", "Curdlemilk", "Upperclass", "Fumblesnitch", "Crumplehorn", "Hufflepuff", "Candlestick", "Chesterfield", "Bumbersplat", "Scratchnsniff", "Snugglesnatch", "Charmwizard", "Carrotstick", "Dumbletoot", "Crackerknack", "Cuckatoo", "Crackletot", "Collywog", "Gigglesnort", "Capncrunch", "Covergirl", "Cobblesnatch", "Countryside", "Coddleswort", "Splishnsplash", "Copperwire", "Animorph", "Curdledmilk", "Cheddarcheese", "Cottagecheese", "Crumplehorn", "Snickersbar", "Banglesnatch", "Stinkyrash", "Camelhump", "Chickenbroth", "Concubine", "Candygram", "Moldyspore", "Chuckecheese", "Cankersore", "Crimpysnitch", "Wafflesmack", "Chowderpants", "Toodlesnoot", "Clavichord", "Cuckooclock", "Oxfordshire", "Cumbersome", "Chickenstrips", "Battleship", "Commonwealth", "Cunningsnatch", "Custardbath", "Kryptonite"];
+
+    var nameBttn = document.getElementById('name-bttn');
+    var nameText = document.getElementById('name-text');
+
+    nameBttn.addEventListener('click', function() {
+      var first = firstNames[Math.round(Math.random() * (firstNames.length-1))];
+      var last = lastNames[Math.round(Math.random() * (lastNames.length-1))];
+
+      nameText.innerText = first +' '+ last;
+    });
+    </script>
+  </body>
+</html>

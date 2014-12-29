@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Currency Converter</title>
+    <style>
+    body {
+      font: 16px/1.5 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      text-align: center;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>Currency Converter</h1>
+    <img src="http://www.arabictrader.com/arabictrader_storage_server/atcop/imgs/2014/Nov/545ce94216195.png" alt="" height="150">
+    <p><label>Dollars <input type="text" value="0" id="currency-dollars"></label></p>
+    <p><label>Euros <input type="text" value="0" id="currency-euros"></label></p>
+
+    <script>
+      var exchangeRate = 0.82;
+
+      var fieldDollars = document.getElementById('currency-dollars');
+      var fieldEuros = document.getElementById('currency-euros');
+
+      fieldDollars.addEventListener('input', function() {
+        var dollars = parseInt(fieldDollars.value || 0);
+        fieldEuros.value = (dollars * exchangeRate).toFixed(2);
+      });
+
+      fieldEuros.addEventListener('input', function() {
+        var euros = parseInt(fieldEuros.value || 0);
+        fieldDollars.value = (euros / exchangeRate).toFixed(2);
+      });
+    </script>
+  </body>
+</html>
