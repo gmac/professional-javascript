@@ -345,11 +345,11 @@ if (condition) {
 
 A conditional statement is comprised of two parts:
 
- - The **condition** is a code *expression* that gets assessed into a boolean (true/false). This condition generally compares two data values (ex: `a < b`).
+ - The **condition** is a code *expression* that gets assessed as a boolean (true/false). This condition generally compares two data values (ex: `a < b`).
  
- - The condition is followed by a **block**, which is a block of code wrapped in curly braces. If the condition evaluates as truthy, then the block runs. Otherwise, the block is skipped.
+ - The condition is followed by a **block**, which is a list of commands wrapped in curly braces. If the condition evaluates as truthy, then the block runs. Otherwise, the block is skipped.
 
-Conditional statements may be extended with multiple clauses using `else if`, and may include a final catch-all `else` block to run when all other conditions fail:
+Conditional statements may be extended with multiple clauses using `else if`, and may include a final catchall `else` block to run when other conditions fail:
 
 ```javascript
 if (a > b) {
@@ -363,15 +363,15 @@ if (a > b) {
 }
 ```
 
-When structuring multi-clause conditionals, just remember that only *one block* will ever be allowed to run during program execution.
+When structuring multi-clause conditionals, just remember that only ONE block will ever be allowed to run during program execution.
 
 ### Data Truthiness
 
-Computer programs make decisions about data in terms they understand: 1 or 0 (true or false). To facilitate this, all data values have an inherent "truthiness", or boolean derived from their value.
+Computer programs make decisions about data in terms that they understand: 1 or 0 (true or false). To facilitate this, all data values have an inherent "truthiness", or a boolean assessed from their value.
 
-Thankfully, we don't need to memorize the truthiness of all possible data values! Programming languages have deliberately few falsey values, so if we know those, we know that everything else is truthy.
+Thankfully, we don't need to memorize the truthiness of all possible data values! Programming languages have deliberately few "falsey" values, so if we know those, we know that everything else is "truthy".
 
-**JavaScript has FIVE falsey values:**
+**JavaScript has FIVE values that asses as falsey:**
 
  - `false` (Boolean)
  - `0` (Number)
@@ -379,7 +379,7 @@ Thankfully, we don't need to memorize the truthiness of all possible data values
  - `null`
  - `undefined`
 
-We commonly put single data values into conditionals, and allow the value's truthiness to fulfill the condition:
+We'll frequently place single data values into conditionals, and allow the value's truthiness to fulfill the condition:
 
 ```javascript
 var orders = [];
@@ -397,7 +397,7 @@ if (orders.length) {
 
 ### Data Comparisons
 
-To assess two values against one another, we perform comparisons:
+To assess two values in relation to one another, we perform comparisons:
 
 ```
 a === b   Equality. Does A equal B?
@@ -410,7 +410,7 @@ a > b     Greater than. Is A greater than B?
 a >= b    Geater than or Equal. Is A greater than OR equal to B?
 ```
 
-Comparison operations again yeild boolean (true or false) values. We commonly perform comparisons inside of conditionals:
+Comparison operations also yeild booleans (true or false). We'll frequently perform comparisons directly inside of conditional statements:
 
 ```javascript
 var age = 18;
@@ -426,7 +426,7 @@ if (age < 21) {
 
 ### Logical Operators
 
-Sometimes we need to reverse our assessment of data, or compare multiple sets of values. Therefore, we have operators for expressing NOT, AND, and OR.
+Sometimes we need to reverse our assessment of data, or assess multiple conditions. The NOT, AND, and OR operators are used here.
 
 **NOT**
 
@@ -444,7 +444,7 @@ if (!orders.length) {
 
 **AND**
 
-The `&&` ("And") operator combines multiple assessment clauses. Clauses may be wrapped in parenthesis to group them. The `&&` operator requires that all clauses be truthy for the full expression to be truthy:
+The `&&` ("And") operator combines multiple assessments. Assessments may be wrapped in parenthesis to group them. The `&&` operator requires that all assessments be truthy for the full expression to be truthy:
 
 ```javascript
 var orders = ['Banana Sandwich'];
@@ -459,7 +459,7 @@ if (orders.length && (orders.length < 10)) {
 
 **OR**
 
-The `||` ("Or") operator checks multiple assessment clauses, and requires that at least one clause be truthy for the full expression to be truthy.
+The `||` ("Or") operator checks multiple assessments, and requires that at least one assessment be truthy for the full expression to be truthy.
 
 ```javascript
 var orders = [];
