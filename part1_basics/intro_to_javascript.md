@@ -416,11 +416,11 @@ Comparison operations again yeild boolean (true or false) values. We commonly pe
 var age = 18;
 
 if (age >= 16) {
-  console.log('You are eligible for a driver's license.');
+  console.log("You are eligible for a driver's license.");
 }
 
 if (age < 21) {
-  console.log('Sorry, you cannot drink alcohol.');
+  console.log("Sorry, you cannot drink alcohol.");
 }
 ```
 
