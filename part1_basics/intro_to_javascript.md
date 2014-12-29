@@ -367,72 +367,130 @@ When structuring multi-clause conditionals, just remember that only *one block* 
 
 ### Data Truthiness
 
-In order for computer programs to make decisions about data, they need to assess the data in a meaningful way. What's meaningful to a computer? Well, 1 and 0, or True and False. Therefore, all data values have their own inherent "truthiness", meaning that any value alone can be assessed as being "truthy" (true) or "falsey" (false).
+Computer programs make decisions about data in terms they understand: 1 or 0 (true or false). To facilitate this, all data values have an inherent "truthiness", or boolean derived from their value.
 
-Now, it would be impossible to memorize the truthiness of every possible data value, right? Thankfully, we don't have to. We just need to know what few values are falsey, because everything else is truthy. Most languages only have a couple falsey values. Regrettably, JavaScript has five:
+Thankfully, we don't need to memorize the truthiness of all possible data values! Programming languages have deliberately few falsey values, so if we know those, we know that everything else is truthy.
 
-**Falsey values in JavaScript:**
+**JavaScript has FIVE falsey values:**
 
- - `false` (boolean false)
- - `0` (number zero)
- - `""` (empty string)
+ - `false` (Boolean)
+ - `0` (Number)
+ - `""` (String with zero characters)
  - `null`
  - `undefined`
 
-```javascript
-var numberOfWishes = 3;
+We commonly put single data values into conditionals, and allow the value's truthiness to fulfill the condition:
 
-if (numberOfWishes) {
-  // This runs, because number of wishes is 3 (truthy).  
+```javascript
+var orders = [];
+
+if (orders.length) {
+  // This does NOT run, because orders has 0 length (falsey).  
 }
 
-numberOfWishes = 0;
+orders.push('Cheese Toast');
 
-if (numberOfWishes) {
-  // This does NOT run, because number of wishes is now 0 (falsey).
+if (orders.length) {
+  // This runs, because orders has a length of 1 (truthy).
 }
 ```
 
 ### Data Comparisons
 
-Programming languages provide a robust suite of comparison operators for doing this.
-
-**Common JavaScript Comparison Operators**:
+To assess two values against one another, we perform comparisons:
 
 ```
-a === b : Equality. Does A equal B?
-a !== b : Inequality. Does A NOT equal B?
+a === b   Equality. Does A equal B?
+a !== b   Inequality. Does A NOT equal B?
 
-a < b : Less than. Is A less than B?
-a <= b : Less than or Equal. Is A less than or equal to B?
+a < b     Less than. Is A less than B?
+a <= b    Less than or Equal. Is A less than OR equal to B?
 
-a > b : Greater than. Is A greater than B?
-a >= b : Geater than or Equal. Is A less than or equal to B?
+a > b     Greater than. Is A greater than B?
+a >= b    Geater than or Equal. Is A greater than OR equal to B?
 ```
 
-Whenever a comparison is performed, it yeilds a **Boolean** (true/false) value. All comparisons are simply asking a Yes/No question.
+Comparison operations again yeild boolean (true or false) values. We commonly perform comparisons inside of conditionals:
 
-```
-NOTE: JavaScript does include other comparison operators that are less common and highly-technical. The operators listed above are recommended for beginners.
-```
+```javascript
+var age = 18;
 
-NOT:
+if (age >= 16) {
+  console.log('You are eligible for a driver's license.');
+}
 
-```
-!(a < b)
-```
-
-AND:
-
-```
-(a < b) && (b < c)
+if (age < 21) {
+  console.log('Sorry, you cannot drink alcohol.');
+}
 ```
 
-OR:
+### Logical Operators
 
+Sometimes we need to reverse our assessment of data, or compare multiple sets of values. Therefore, we have operators for expressing NOT, AND, and OR.
+
+**NOT**
+
+The `!` ("Bang") operator negates the truthiness of the proceeding expression:
+
+```javascript
+var orders = [];
+
+if (!orders.length) {
+  // If we have no orders...
+  // This block RUNS because:
+  // - Orders length is 0 (falsey), negated to be truthy.
+}
 ```
-(a < b) || (b < c)
+
+**AND**
+
+The `&&` ("And") operator combines multiple assessment clauses. Clauses may be wrapped in parenthesis to group them. The `&&` operator requires that all clauses be truthy for the full expression to be truthy:
+
+```javascript
+var orders = ['Banana Sandwich'];
+
+if (orders.length && (orders.length < 10)) {
+  // If we have orders, and the quantity is less than ten...
+  // This block RUNS because:
+  // - Orders length is 1 (truthy), AND...
+  // - Orders length is less than 10 (truthy)
+}
 ```
 
-## Functions (the basics)
+**OR**
 
+The `||` ("Or") operator checks multiple assessment clauses, and requires that at least one clause be truthy for the full expression to be truthy.
+
+```javascript
+var orders = [];
+
+if (!orders.length || (orders.length > 10) {
+  // If we have no orders, or we have more than 10 orders...
+  // This block RUNS because:
+  // - (!orders.length) is truthy, OR...
+  // - (orders.length > 10) is falsey
+}
+```
+
+## Functions (For Dummies)
+
+At their most basic, functions are reusable blocks of code. After a function is declared using the `function` keyword, it may be *invoked* (or, called upon) repeatedly to run its operation:
+
+```javascript
+var goBoom = function() {
+  console.log('BOOM!');
+};
+
+goBoom(); // BOOM!
+goBoom(); // BOOM!
+```
+
+We commonly use functions to *callback* after other operations complete:
+
+```javascript
+setTimeout(function() {
+  // This function will run after a 1-second timer...
+}, 1000);
+```
+
+In the above example, `setTimeout` configures a one second (1000 millisecond) timer, after which our provided callback function will be invoked.
