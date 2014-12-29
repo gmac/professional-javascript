@@ -27,7 +27,7 @@ The DOM is composed of individual **elements**. If we want to manipulate an elem
 
 In JavaScript, we prefer to target elements by their `id` attribute, and leave CSS classes exclusively for styling purposes.
 
-```
+```html
  <header>
    <h1>The Raven</h1>
    <p id="author">Edgar Allen Poe</p>
@@ -47,7 +47,7 @@ Common element selector methods include:
 
 Once we've accessed a DOM element, we can get and/or set their data. This could be as basic as reading attributes from the element, or major as replacing the element's entire HTML contents.
 
-```
+```html
  <p id="author">Edgar Allen Poe</p>
 
  <script>
@@ -73,7 +73,7 @@ To make our applications interactive, we need to know when the user interacts wi
 
 We use JavaScript to "listen" for the specific events that we're interested in responding to:
 
-```
+```html
  <button id="done">I'm Done</button>
  
  <script>
