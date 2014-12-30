@@ -311,7 +311,13 @@ user.signinCount += 1; // 222
 user["isAdmin"] = false;
 ```
 
-## Enumeration
+## Enumeration (`for` loops)
+
+Composite data structures (Arrays and Objects) allow programs to iterate through each item referenced in their data structure using the `for` statement. This process of stepping incrementally through each item in a set is called *enumeration*.
+
+**Arrays**
+
+The most basic and reliable enumeration technique for an array is a sequential `for` loop that steps through each index position:
 
 ```javascript
 var heros = ['Luke', 'Leia', 'Han'];
@@ -321,17 +327,36 @@ for (var i=0; i < heros.length; i++) {
 }
 ```
 
+This `for` loop has three parts: an iterator, a condition, and an increment.
+
+ - The **iterator** maintains a counter for stepping through array indices.
+ - The **condition** determins when the loop has completed and should exit.
+ - The **increment** advances the iterator at the end of each loop cycle.
+ 
+JavaScript arrays provide some handy methods to simplify common `for` loop tasks. Research `forEach`, `map`, and `reduce` methods.
+
+**Objects**
+
+With objects, we have named keys to enumerate rather than sequential numeric indices. To access each named key, we use an alternate form of the `for` loop known as `for...in`.
+
 ```javascript
-var heroScores = {
-  'Luke': 8,
-  'Leia': 9,
-  'Han': 15
+var heroAges = {
+  'Luke': 19,
+  'Leia': 19,
+  'Han': 29
 };
 
-for (var hero in heroScores) {
-  console.log( hero +': '+ heroScores[hero] );
+for (var heroName in heroAges) {
+  console.log( heroName +': '+ heroAges[heroName] );
 }
 ```
+
+This `for...in` loop has two parts: an iterator, and an object.
+
+ - The **iterator** variable will assume the value of each *key* as the loop runs.
+ - The **object** specifies what data structure to loop through the keys of.
+
+Now, this simpler `for...in` loop technically works on arrays as well, however it cannot guarentee the order in which keys are accessed. For named object keys, we're generally not concerned with access order. For ordered arrays though, it's generally safest to use a sequential `for` loop.
 
 ## Conditionals
 
