@@ -28,9 +28,9 @@ The JavaScript console is an interactive environment in all major web browsers w
 
 **To access the console:**
 
- - Chrome: 
+ - **Chrome**: 
    - View > Developer Tools > JavaScript Console (CMD + Shift + j)
- - Safari:
+ - **Safari**:
    - Preferences > Advanced > Show Develop Menu. Then...
    - Develop > Show Web Inspector > JavaScript
 
@@ -46,7 +46,7 @@ console.log("Hello World!");
 
 Comments are human-readable notes included in code that are ignored by the program. Commenting your code will help narrate programming logic for your own benefit and that of other developers. In JavaScript, use `//` to open a comment line:
 
-```
+```javascript
 // Print a friendly message into the console:
 console.log("Hello World!");
 ```
@@ -57,18 +57,19 @@ This document will frequently include comments to narrate code examples.
 
 Computer programs fundamentally operate through the interaction of data. That begs the question: what IS data? The simple answer is that data comes in different forms for different uses.
 
-### Primitives
+### Primitive Types
 
-Primitive data types have discrete values, such as text, numbers, and true/false:
+Primitives have discrete values, such as text and numbers. These are basic data building blocks:
 
  - **String**: `"A string of characters."`
- - **Number**: `5` or `3.14`
+ - **Number**: `5` (integer) or `3.14` (floating-point decimal)
  - **Boolean**: `true` or `false`
- - **Non-Values**: `undefined` and `null`
+ - **Undefined**: `undefined` fills in for values that have not yet been set.
+ - **Null**: `null` is generally assigned as a placeholder for missing data.
  
-### Composites
+### Composite Types
 
-Composite data types are structures that manage references to many primitive values, and/or other composite structures:
+Composite structures manage references to many primitive values, and/or other composite structures:
 
  - **Array**: `["hello", 23, true]`
  - **Object**: `{firstName: "Indiana", lastName: "Jones"}`
@@ -153,13 +154,13 @@ In the above example, math could not be performed on Number and String data toge
 
 ## Variables
 
-Data values may be assigned to custom labels called **Variables**. Think of a variable as a name tag for a piece of data.
+Data values may be assigned custom labels called **Variables**. Think of a variable as a name tag for a piece of data. A single value may have many variables referring to it.
 
-** Declaration & Assignment**
+**Declaration & Assignment**
 
 Variables are declared using the `var` keyword, and are assigned values using the `=` (assignment) operator. A variable may refer to any type of data.
 
-```
+```javascript
 var customerName = "Bruce Wayne";
 var orderQuantity = 50;
 var totalPrice = orderQuantity * 10.99;
@@ -167,7 +168,7 @@ var totalPrice = orderQuantity * 10.99;
 
 We only need to declare each variable ONCE using the `var` keyword. After a variable has been declared, we can reference and reassign it at any time by just its name:
 
-```
+```javascript
 // Initial declarations...
 var orderQuantity = 10;
 var unitPrice = 10.99;
@@ -180,18 +181,16 @@ totalPrice = orderQuantity * unitPrice;
 
 **Naming**
 
-In JavaScript, variable names should be written using headless camel case:
+In JavaScript, variable names should be formatted using *headless camel case* (initial lower-case with capitalized word separators). This naming convention is a precedent of the JavaScript language:
 
-```
+```javascript
 var headlessCamelCase = "Correct.";
 ```
 
-This naming convention (initial lower-case with capitalized word separators) is a precedent of the JavaScript language.
+Also note that JavaScript naming is case-sensative. That means names with different capitalizations are treated as different variables:
 
-Also note that JavaScript naming is case-sensative. That means names with different capitalizations are treated as separate variables:
-
-```
-// Be careful, these are separate variables:
+```javascript
+// Be careful, these are separate variables due to capitalization:
 var viewPort = '16:9';
 var viewport = '4:3';
 ```
@@ -200,7 +199,7 @@ var viewport = '4:3';
 
 We frequently need to reassign a variable to itself altered by a modifier:
 
-```
+```javascript
 orderQuantity = orderQuantity + 1;
 ```
 
@@ -211,25 +210,25 @@ var orderQuantity = 10;
 
 orderQuantity += 1; // adds 10+1, then reassigns as 11
 orderQuantity -= 5; // subtracts 11-5, then reassigns as 6 
-orderQuantity *= 2; // multiplies 6\*2, then reassigns as 12
+orderQuantity *= 2; // multiplies 6*2, then reassigns as 12
 orderQuantity /= 4; // divides 12\4, then reassigns as 3
 ```
 
 You may also see the `++` (increment) and `--` (decrement) operators used occasionally. These modify a variable's value by +1 and -1 respectively:
 
-```
+```javascript
 var i = 5;
 i++; // adds 5+1, then reassigns as 6
 i--; // subtracts 6-1, then reassigns as 5
 ```
 
-The increment and decrement operators far are trickier than they appear, so are generally only used with `for` loops (discussed later).
+Beware: the increment and decrement operators are far trickier than they appear, so it's best to only use them in `for` loops (discussed later) while getting started. Otherwise, use `+= 1` and `-= 1`.
 
 ### Pass by Value vs. Reference
 
 It's quite common for variables to reference one another:
 
-```
+```javascript
 var a = 100;
 var b = a;
 ```
@@ -240,7 +239,7 @@ While this process looks simple enough, it's actually very important to understa
 
 For Strings, Numbers, and Booleans, data values are *copied* between variables. Each variable will get a unique piece of data with the same primitive value:
 
-```
+```javascript
 var a = 10;
 var b = a;
 
@@ -253,7 +252,7 @@ b; // 10 <-- B was NOT. It's still a copy of A's original value.
 
 Arrays and Objects can grow extremely large. Making copies of these large data structures can be slow, and duplicate copies will quickly consume memory. Therefore, composite data structures are *referenced* between variables:
 
-```
+```javascript
 var a = [];
 var b = a;
 
@@ -268,52 +267,51 @@ While composite data structures *can* be duplicated, JavaScript requires you to 
 
 ## Arrays
 
-Arrays manage a set of data references, indexed numerically. Any type of data may be added to an array, and any number of values may be added.
+Arrays manage a set of data references, indexed with sequential numbers. Any type of data may be added to an array, and any number of values may be added.
 
 ```javascript
 // Create a new empty array:
 var empty = [];
 
 // Create a new array with initial values:
-var junk = ['Bob', 23, true];
+var stuff = ["hello", 23, true];
 ```
 
 Arrays maintain a `length` property that will always tell us how many values are in the array:
 
 ```javascript
-junk.length // 3
+stuff.length // 3
 ```
 
-To reference values within an array, we use square brackets citing an index position. The first index position is always *zero*:
+To reference values within an array, use square brackets citing an index position. The first index position is always *zero*:
 
 ```javascript
-junk[0] // "Bob"
-junk[1] // 23
-junk[2] // true
+stuff[0] // "hello"
+stuff[1] // 23
+stuff[2] // true
 ```
 
-Arrays can also contain nested data structures, such as other arrays. We can reference nested arrays by chaining their position accessors:
+Arrays may contain nested data structures, such as other arrays. We reference nested arrays by chaining their index accessors:
 
 ```javascript
 var heros = [['Luke', 'Jedi'], ['Leia', 'Rebel'], ['Han', 'Rouge']];
 
 heros.length // 3
-heros[0].length // 2
-
+heros[0] // ['Luke', 'Jedi']
 heros[1][0] // 'Leia'
 heros[2][1] // 'Rouge'
 ```
 
-Arrays also provide a host of methods for managing their contents. For example, a common method used to add items onto the end of an array is `push`:
+Arrays provide a host of methods for managing their contents. For example, use `push` to add items onto the end of an array:
 
 ```javascript
 var fruits = ['banana', 'apple'];
 
 fruits.push('coconut'); // ['banana', 'apple', 'coconut']
-fruits.length // 3
+fruits.length; // 3
 ```
 
-Or, a common method used to remove (and return) items from the end of an array is `pop`:
+Or use `pop` to remove (and return) the last item from an array:
 
 ```javascript
 var lastFruit = fruits.pop(); // 'coconut'
@@ -329,7 +327,6 @@ fruits.length // 2
  - `slice`: copies an array.
  - `splice`: adds and removes items from an array at specific indices.
  - `sort`: sorts the contents of an array.
-
 
 ## Objects
 
