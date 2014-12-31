@@ -99,7 +99,7 @@ To monitor user input, we select the element that we're interested in and call u
 
 ### The Event Object
 
-When we bind an event handler, that function may define an argument (usually called `evt`) to recieve the *Event Object*:
+When we bind an event handler, that function may declare an argument (usually called `evt`) to recieve the *Event Object*:
 
 ```html
  <button id="done">I'm Done</button>
