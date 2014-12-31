@@ -11,25 +11,23 @@
 
 The DOM, or Document Object Model, is the living representation of an HTML document. HTML itself is just plain old text. A web browser simply parses HTML into data, and then uses that data to assemble an interactive program. This interactive program is the DOM.
 
-## Is JavaScript the DOM?
+### Is JavaScript the DOM?
 
 In a word: NO. JavaScript is a general purpose *programming language*. The DOM is a very specific *program*. The DOM is very much its own beast; we simply talk to it using JavaScript.
 
-## What does the DOM do?
+### What does the DOM do?
 
-The DOM allows us to dynamically respond to and manipulate a web page. Generally speaking, there are three major tasks that we do with the DOM:
+The DOM allows us to dynamically respond to and manipulate a web page. Generally speaking, there are three major tasks that we use the DOM for:
 
-1. We select individual elements (or sets of elements) out of the DOM to work with them.
+1. We **select** individual elements (or sets of elements) out of the DOM to work with them.
 
-2. We exchange data with the DOM, meaning that we read data out of specific elements, or write new data and/or elements into the DOM structure.
+2. We **exchange data** with the DOM: this involves reading data from specific elements, and/or writing new data into the DOM structure.
 
-3. We observe the DOM for user interactions, allowing us to respond to events such as button clicks and form input.
+3. We **observe** the DOM for user interactions, and then respond to events such as text input or button clicks.
 
 ## Selecting Elements
 
-The DOM is composed of individual **elements**. If we want to manipulate an element, we must first select it (or, reference it) from the DOM.
-
-In JavaScript, we prefer to target elements by their `id` attribute, and leave CSS classes exclusively for styling purposes.
+The DOM is composed of individual **elements**. If we want to manipulate an element, we must first select it, or reference it, from the DOM. In JavaScript, we prefer to select elements by their `id` attribute, and leave CSS classes for styling purposes.
 
 ```html
  <header>
@@ -42,14 +40,14 @@ In JavaScript, we prefer to target elements by their `id` attribute, and leave C
  </script>
 ```
 
-Common element selector methods include:
+**Common element selector methods include:**
 
  - `document.querySelector("#css-selector")` : Gets ONE element.
  - `document.querySelectorAll(".css-selector")` : Gets ALL matching elements.
  
-## Exchanging Data with Elements
+## Exchanging Data
 
-Once we've accessed a DOM element, we can get and/or set their data. This could be as basic as reading attributes from the element, or major as replacing the element's entire HTML contents.
+Once we've selected the DOM elements that we're interested in, we can get and/or set their data. This can be as simple as reading attributes of an element, or as significant as replacing an element's entire HTML content.
 
 ```html
  <p id="author">Edgar Allen Poe</p>
@@ -71,11 +69,9 @@ Once we've accessed a DOM element, we can get and/or set their data. This could 
  - `getAttribute(attr)`: gets an attribute value of the element.
  - `setAttribute(attr, value)`: sets the value of an attribute.
  
-## Listening for Element Events
+## Observing User Interaction
 
-To make our applications interactive, we need to know when the user interacts with the DOM (ie: clicking buttons, entering text, etc). Thankfully, the DOM does all the heavy lifting of tracking user input for us; it then fires off **events**, or notifications, when actions occur.
-
-We use JavaScript to "listen" for the specific events that we're interested in responding to:
+To make our applications interactive, we need to know when the user interacts with the DOM (ie: clicking buttons, entering text, etc). Thankfully, the DOM does all the heavy lifting of tracking input for us. The DOM then fires off an **event**, or notification, when an interaction occurs that we can tell JavaScript to *listen* for:
 
 ```html
  <button id="done">I'm Done</button>
@@ -83,17 +79,40 @@ We use JavaScript to "listen" for the specific events that we're interested in r
  <script>
    var doneEl = document.querySelector('#done');
    
-   doneEl.addEventListener('click', function() {
+   doneEl.addEventListener('click', function(evt) {
      console.log('The user is done!!');
    });
  </script>
 ```
 
-To listen for events, we call `addEventListener` on the element we're interested in, and pass in the event name to listen for and a function to execute when the event occurs.
+To monitor user input, we select the element that we're interested in and call upon it's `addEventListener` method to bind an event. The `addEventListener` method takes two parameters:
 
-**Commonly tracked events:**
+ - The **event name** to listen for.
+ - An **event handler function** (callback) to run when the event occurs.
+
+**Commonly tracked event names:**
 
  - `"click"`: triggered when elements are clicked.
  - `"input"`: triggered when an input form element recieves input.
  - `"change"`: triggered when an input element changes value.
  - `"submit"`: triggered by a form element when it is submitted.
+
+### The Event Object
+
+When we bind an event handler function, that function may define an argument (usually called `evt`) to recieve the *event object*. The event object is passed into the handler function by the browser, and includes a detailed description of the event that has just occured:
+
+```html
+ <button id="done">I'm Done</button>
+ 
+ <script>
+   var doneEl = document.querySelector('#done');
+   
+   doneEl.addEventListener('click', function(evt) {
+     console.log(evt.target); // the "#done" element that the event occured on.
+     console.log(evt.localX); // x-position of the cursor when the event occured.
+     console.log(evt.shiftKey); // was the shift key pressed when the event occured?
+   });
+ </script>
+```
+
+The event object contains all sorts of useful data about the state of the browser when the user interaction occured. It includes the coordinates of the cursor, the keyboard code of a keystroke, other control keys pressed at the time of the event, etc. See [event documentation](https://developer.mozilla.org/en-US/docs/Web/API/Event) for a complete list of available event data.
