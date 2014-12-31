@@ -1,0 +1,31 @@
+h1 {
+  font-size: 20px;
+}
+tfoot {
+  font-weight: bold;
+}
+
+.expense-tracker {
+  display: table;
+  margin: 50px auto;
+  max-width: 1000px;
+  table-layout: fixed;
+  width: 90%;
+}
+
+.col {
+  display: table-cell;
+}
+
+.expense-add {
+  padding-right: 30px;
+  width: 35%;
+}
+
+@media (max-width: 600px) {
+  .col { 
+    display: block !important;
+    padding: 0 !important;
+    width: auto !important;
+  }
+}

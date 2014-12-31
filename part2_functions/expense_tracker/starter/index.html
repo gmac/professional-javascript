@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Expense Tracker</title>
+  <link href="stylesheets/bootstrap.css" rel="stylesheet">
+  <link href="stylesheets/expense.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="expense-tracker">
+    <form id="expense-add" class="col expense-add">
+      <h1>Add Expense</h1>
+      <fieldset>
+        <label for="expense-desc">Description</label>
+        <input type="text" class="input-block-level" id="expense-desc">
+      </fieldset>
+      <fieldset>
+        <label for="expense-amount">Amount</label>
+        <input type="text" class="input-block-level" id="expense-amount">
+      </fieldset>
+      <fieldset>
+        <label for="expense-category">Category</label>
+        <select class="input-block-level" id="expense-category">
+          <option>General</option>
+          <option>Food</option>
+          <option>Entertainment</option>
+          <option>Transportation</option>
+          <option>Utilities</option>
+        </select>
+      </fieldset>
+      <p><button id="expense-add-bttn" class="btn btn-primary">Add Expense</button></p>
+    </form>
+
+    <div class="col expense-list">
+      <h1>Expenses</h1>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody id="expense-list">
+          <tr>
+            <td>Entertainment</td>
+            <td>Guardians of the Galaxy</td>
+            <td>$12.50</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>TOTAL</td>
+            <td></td>
+            <td id="expense-total">$12.50</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+
+  <script src="javascripts/expense.js"></script>
+</body>
+</html>
