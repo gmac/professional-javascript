@@ -79,7 +79,7 @@ To make our applications interactive, we need to know when the user interacts wi
  <script>
    var doneEl = document.querySelector('#done');
    
-   doneEl.addEventListener('click', function(evt) {
+   doneEl.addEventListener('click', function() {
      console.log('The user is done!!');
    });
  </script>
@@ -88,7 +88,7 @@ To make our applications interactive, we need to know when the user interacts wi
 To monitor user input, we select the element that we're interested in and call upon it's `addEventListener` method to bind an event. The `addEventListener` method takes two parameters:
 
  - The **event name** to listen for.
- - An **event handler function** (callback) to run when the event occurs.
+ - A **handler function** (callback) to run when the event occurs.
 
 **Commonly tracked event names:**
 
@@ -99,7 +99,7 @@ To monitor user input, we select the element that we're interested in and call u
 
 ### The Event Object
 
-When we bind an event handler function, that function may define an argument (usually called `evt`) to recieve the *event object*. The event object is passed into the handler function by the browser, and includes a detailed description of the event that has just occured:
+When we bind an event handler, that function may define an argument (usually called `evt`) to recieve the *Event Object*:
 
 ```html
  <button id="done">I'm Done</button>
@@ -115,4 +115,4 @@ When we bind an event handler function, that function may define an argument (us
  </script>
 ```
 
-The event object contains all sorts of useful data about the state of the browser when the user interaction occured. It includes the coordinates of the cursor, the keyboard code of a keystroke, other control keys pressed at the time of the event, etc. See [event documentation](https://developer.mozilla.org/en-US/docs/Web/API/Event) for a complete list of available event data.
+The Event Object contains all sorts of useful data detailing the state of the browser at the time the event occured. It includes the coordinates of the cursor, the keyboard code of a keystroke, other control keys pressed at the time of the event, etc. See [event documentation](https://developer.mozilla.org/en-US/docs/Web/API/Event) for a complete summary of event data.
