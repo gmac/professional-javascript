@@ -11,15 +11,19 @@
 
 The DOM, or Document Object Model, is the living representation of an HTML document. HTML itself is just plain old text. A web browser simply parses HTML into data, and then uses that data to assemble an interactive program. This interactive program is the DOM.
 
-## What does the DOM do?
-
-The DOM allows us to manipulate elements within a web page. We can get and set the content of individual elements, we can add and remove elements on the fly, and we can capture the input that occurs when a user interacts with any element.
-
 ## Is JavaScript the DOM?
 
 In a word: NO. JavaScript is a general purpose *programming language*. The DOM is a very specific *program*. The DOM is very much its own beast; we simply talk to it using JavaScript.
 
----
+## What does the DOM do?
+
+The DOM allows us to dynamically respond to and manipulate a web page. Generally speaking, there are three major tasks that we do with the DOM:
+
+1. We select individual elements (or sets of elements) out of the DOM to work with them.
+
+2. We exchange data with the DOM, meaning that we read data out of specific elements, or write new data and/or elements into the DOM structure.
+
+3. We observe the DOM for user interactions, allowing us to respond to events such as button clicks and form input.
 
 ## Selecting Elements
 
