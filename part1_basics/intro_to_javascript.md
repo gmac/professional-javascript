@@ -348,6 +348,11 @@ var user = {
   firstName: 'Darth',
   lastName: 'Vader',
   email: 'darth.vader@imperialrule.gov',
+  badges: ['Destroyer of Worlds', 'Diplomacy'],
+  userGroup: {
+    name: 'Imperial Forces',
+    id: 1
+  },
   signinCount: 221,
   isAdmin: true
 };
@@ -360,19 +365,26 @@ When accessing data stored on an object, we can use dot syntax or bracket syntax
 user.userName; // "bigvader23"
 
 // Bracket syntax:
-user["lastName"]; // "Vader"
+user["userName"]; // "bigvader23"
 ```
+
 To add or modify key/value pairs of an Object, we can simply assign the values to key names using dot syntax or bracket syntax:
 
 ```javascript
-// Assign new value using dot syntax:
-user.lightsaberColor = "red";
+// Add new key/value pairs using dot or bracket syntax:
+user.saberColor = "red";
+user["saberColor"] = "red";
 
-// Modify existing values, just like any other variable:
-user.signinCount += 1; // 222
-
-// Assign values using bracket syntax:
+// Modify existing property values using dot or bracket syntax:
+user.isAdmin = false;
 user["isAdmin"] = false;
+```
+
+To access nested array and object structures, simply chain accessors together:
+
+```javascript
+user.badges[0]; // "Destroyer of Worlds"
+user.userGroup.name; // "Imperial Forces"
 ```
 
 ## Enumeration (`for` loops)
