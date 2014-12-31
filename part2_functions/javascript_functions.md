@@ -97,6 +97,8 @@ function() {
 
 In computer science, a programming language is said to have first-class functions when it treats them as "first-class citizens". This means functions are considered a full-fledged data type, versus just being runable blocks of code.
 
+TODO: Explain the difference between calling and referencing a function in JavaScript.
+
 In JavaScript, functions are *objects* just like every other data type, and can therefore be used interchangably with other data. Uses of first-class functions include:
 
 ### 1. Assigning functions to variables

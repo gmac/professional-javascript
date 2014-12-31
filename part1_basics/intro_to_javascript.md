@@ -10,16 +10,6 @@
 - What are Conditionals?
 - What are Functions? How do they basically work?
 
-Peter stuff:
-
-- Explain the difference between calling and referencing a function in JavaScript.
-- Follow a JavaScript style guide and use the appropriate syntax
-- Define a function in JavaScript
-- Create an array, access items in an array, change the value of items in an array
-- Use a for loop for iteration
-- Create objects using literal notation
-- Access property values in a JavaScript object
-
 ---
 
 ## What IS JavaScript?
@@ -32,13 +22,19 @@ JavaScript quickly gained universal adoption among web browsers, making it the u
 
 ---
 
-## Accessing the JavaScript Console
+## The JavaScript Console
 
- - **In Chrome:** View > Developer Tools > JavaScript Console (or CMD + Shift + j)
- - **In Safari:**
- - **In Firefox:**
+The JavaScript console is an interactive environment in all major web browsers where you can run JavaScript commands and see JavaScript output from the current page. It is an excellent sandbox for playing with with JavaScript.
 
-To print messages into the JavaScript console, use `console.log()` within your JavaScript code:
+**To access the console:**
+
+ - Chrome: 
+   - View > Developer Tools > JavaScript Console (CMD + Shift + j)
+ - Safari:
+   - Preferences > Advanced > Show Develop Menu. Then...
+   - Develop > Show Web Inspector > JavaScript
+
+When writing JavaScript, you can use `console.log` to print messages from your scripts out into the JavaScript console:
 
 ```javascript
 console.log("Hello World!");
@@ -48,13 +44,22 @@ console.log("Hello World!");
 
 ## Comments
 
-Comments are notes written in code for the benefit of developers. Comments are ignored by a program. A line is commented using `// Message`.
+Comments are human-readable notes included in code that are ignored by the program. Commenting your code will help narrate programming logic for your own benefit and that of other developers. In JavaScript, use `//` to open a comment line:
+
+```
+// Print a friendly message into the console:
+console.log("Hello World!");
+```
+
+This document will frequently include comments to narrate code examples.
 
 ## Data Types
 
+Computer programs fundamentally operate through the interaction of data. That begs the question: what IS data? The simple answer is that data comes in different forms for different uses.
+
 ### Primitives
 
-Primitive data types have discrete values, such as text, numbers, and true/false. These primitive data types tend to be small and memory efficient:
+Primitive data types have discrete values, such as text, numbers, and true/false:
 
  - **String**: `"A string of characters."`
  - **Number**: `5` or `3.14`
@@ -63,14 +68,14 @@ Primitive data types have discrete values, such as text, numbers, and true/false
  
 ### Composites
 
-Composite data types are structures that hold many discrete values. These values may be primitives or other composite structures. We'll discuss these more later:
+Composite data types are structures that manage references to many primitive values, and/or other composite structures:
 
  - **Array**: `["hello", 23, true]`
- - **Object**: `{firstName: "Greg", lastName: "MacWilliam"}`
+ - **Object**: `{firstName: "Indiana", lastName: "Jones"}`
 
 ### Using `typeof`
 
-You'll commonly want to inspect an unknown value's data type. This can be done using the `typeof` keyword, which provides a string description of the value's data type:
+We commonly want to know the data type of an unknown value. This can be done using the `typeof` keyword, which will provide a string description of the value's data type:
 
 ```javascript
 typeof "Hello" // "string"
@@ -78,9 +83,9 @@ typeof 23 // "number"
 typeof true // "boolean"
 ```
 
-### String Operations and Methods
+### String Operations & Methods
 
-A **String** manages a "string" of characters; ie: a chunk of text. Strings are always wrapped in single or double quotes (this allows the opposite quotation type to be nested within the string):
+A **String** manages a "string" of characters, or, a chunk of text. Strings are always wrapped in single or double quotes (this allows the opposite quotation type to be nested within the string):
 
 ```javascript
 // Wrapped in single quotes:
@@ -90,7 +95,7 @@ A **String** manages a "string" of characters; ie: a chunk of text. Strings are 
 "Bilbo's ring."
 ```
 
-Strings may be joined together, or, "concatenated" using the `+` operator:
+Strings may be *concatenated*, or joined together, using the `+` operator:
 
 ```javascript
 // Concatenate three strings...
@@ -100,7 +105,7 @@ Strings may be joined together, or, "concatenated" using the `+` operator:
 "Hello World"
 ```
 
-All data types have built-in "methods", or, functions provided my the JavaScript language for manipulating the data. We can call methods directly on data values to transform them. Strings provide many useful methods, for example:
+All data types have built-in *methods*, or, functions provided my the JavaScript language for manipulating the data. We can call methods directly on data values to transform them. Strings provide many useful methods:
 
 ```javascript
 // Call the "toLowerCase" method of String data:
@@ -111,17 +116,17 @@ All data types have built-in "methods", or, functions provided my the JavaScript
 "Hello World".slice(5) // "Hello"
 ```
 
-Note that the methods available for a given data value is determined by its data type (in other words, Strings have a different set of built-in methods than Numbers).
+The methods available for a given data value is determined by its data type (in other words, Strings have a different set of built-in methods than Numbers).
 
 **Common String methods**:
 
- - `toUpperCase` / `toLowerCase`
+ - `toUpperCase` / `toLowerCase` (transforms letter case)
  - `slice` / `substr` (extracts portions of a string)
  - `indexOf` (finds text position within a string)
   
-### Number Operations and Methods
+### Number Operations & Methods
 
-A **Number** manages a numeric value. These may be integers (whole numbers) or decimals. Numbers support basic math operations using the `+`, `-`, `*`, and `\` operators:
+A **Number** manages a numeric value. These may be integers (whole numbers) or decimals. Numbers allow basic arithmatic using the `+`, `-`, `*`, and `\` operators:
 
 ```javascript
 4 + 2 // 6 (addition)
@@ -130,13 +135,13 @@ A **Number** manages a numeric value. These may be integers (whole numbers) or d
 4 / 2 // 2 (division)
 ```
 
-Note that problems arise when attempting to perform numeric operations on mixed datatypes, such as Strings and Numbers together. For example:
+Note that problems arise when attempting to perform numeric operations on mixed data types, such as Strings and Numbers together. For example:
 
 ```javascript
 23 + "50" // "2350" (whoops, we got string concatenation!)
 ```
 
-In the above example, math could not be performed on Number and a String data, so both values were converted to strings and concatenated. To address this, JavaScript provides some built-in methods for parsing strings into proper numeric formats:
+In the above example, math could not be performed on Number and String data together, so both values were converted to strings and concatenated. To fix this, we'd use one of JavaScript's provided methods for parsing the string into a proper number:
 
 ```javascript
 // Parse a string into a numeric integer:
@@ -146,64 +151,120 @@ In the above example, math could not be performed on Number and a String data, s
 100 * parseFloat("0.5") // 50
 ```
 
-Increments...
-
-```javascript
-++;
-+=;
-```
-
 ## Variables
 
-Data values may be managed using dynamically-assigned labels called **Variables**. Think of a variable as a name tag for a piece of data:
+Data values may be assigned to custom labels called **Variables**. Think of a variable as a name tag for a piece of data.
 
-```javascript
-var costPerWidget = 10;
-var numberOfWidgets = 50;
-var totalCost = costPerWidget * numberOfWidgets;
+** Declaration & Assignment**
 
-// totalCost is 500
+Variables are declared using the `var` keyword, and are assigned values using the `=` (assignment) operator. A variable may refer to any type of data.
+
+```
+var customerName = "Bruce Wayne";
+var orderQuantity = 50;
+var totalPrice = orderQuantity * 10.99;
 ```
 
-Variables are declared using the `var` keyword. A variable may refer to any type of data, and may be reassigned to refer to a new data value at any time. In JavaScript, variable names use the following naming convention:
+We only need to declare each variable ONCE using the `var` keyword. After a variable has been declared, we can reference and reassign it at any time by just its name:
 
-```javascript
-var headlessCamelCase = "<< Correct.";
+```
+// Initial declarations...
+var orderQuantity = 10;
+var unitPrice = 10.99;
+var totalPrice = orderQuantity * unitPrice;
 
-var slithering_snake_case = "<< Wrong.";
+// Later...
+orderQuantity = 9;
+totalPrice = orderQuantity * unitPrice;
 ```
 
-We only need to declare a variable ONCE using the `var` keyword. After a variable has been declared, we can reference and modify it freely using just its name.
+**Naming**
+
+In JavaScript, variable names should be written using headless camel case:
+
+```
+var headlessCamelCase = "Correct.";
+```
+
+This naming convention (initial lower-case with capitalized word separators) is a precedent of the JavaScript language.
+
+Also note that JavaScript naming is case-sensative. That means names with different capitalizations are treated as separate variables:
+
+```
+// Be careful, these are separate variables:
+var viewPort = '16:9';
+var viewport = '4:3';
+```
+
+**Modification Operators**
+
+We frequently need to reassign a variable to itself altered by a modifier:
+
+```
+orderQuantity = orderQuantity + 1;
+```
+
+This pattern is SO common, in fact, that JavaScript provides operators to abbreviate this. These operators modify a variable's value, and then reassign the result back to the variable:
 
 ```javascript
 var orderQuantity = 10;
 
-// User removes an item from their shopping cart...
-
-orderQuantity = orderQuantity - 1;
+orderQuantity += 1; // adds 10+1, then reassigns as 11
+orderQuantity -= 5; // subtracts 11-5, then reassigns as 6 
+orderQuantity *= 2; // multiplies 6\*2, then reassigns as 12
+orderQuantity /= 4; // divides 12\4, then reassigns as 3
 ```
 
-The above example, where we set a variable to itself altered by a modifier, is an extremely common operation. SO common, in fact, that JavaScript has built-in operators for doing this for us:
+You may also see the `++` (increment) and `--` (decrement) operators used occasionally. These modify a variable's value by +1 and -1 respectively:
 
-```javascript
-var orderQuantity = 10;
-
-orderQuantity += 1; // 11
-orderQuantity -= 5; // 6
-orderQuantity *= 2; // 12
-orderQuantity /= 4; // 3
+```
+var i = 5;
+i++; // adds 5+1, then reassigns as 6
+i--; // subtracts 6-1, then reassigns as 5
 ```
 
-These operators are handy for operating on a variable's value and then assigning the result back to the variable.
+The increment and decrement operators far are trickier than they appear, so are generally only used with `for` loops (discussed later).
 
-Objects are pass by reference, primitives are pass by value. Do for numbers and strings:
+### Pass by Value vs. Reference
 
-```javascript
- a = 5
- b = a
- a = 6
- b
+It's quite common for variables to reference one another:
+
 ```
+var a = 100;
+var b = a;
+```
+
+While this process looks simple enough, it's actually very important to understand how this data exchange works under the hood. This passing of data differs slightly for primitive and composite data types.
+
+**Primitive data is passed by value.**
+
+For Strings, Numbers, and Booleans, data values are *copied* between variables. Each variable will get a unique piece of data with the same primitive value:
+
+```
+var a = 10;
+var b = a;
+
+a += 1; // <-- Modify variable A.
+a; // 11 <-- A was modified.
+b; // 10 <-- B was NOT. It's still a copy of A's original value.
+```
+ 
+**Composite data is passed by reference.**
+
+Arrays and Objects can grow extremely large. Making copies of these large data structures can be slow, and duplicate copies will quickly consume memory. Therefore, composite data structures are *referenced* between variables:
+
+```
+var a = [];
+var b = a;
+
+a.push("test"); // <-- Modify variable A.
+a.length; // 1 <-- A has one item.
+b.length; // 1 <-- B has one item.
+```
+
+The above demonstrates how multiple variables will reference the same underlying data structure. Modifications to the underlying data are present among all aliases.
+
+While composite data structures *can* be duplicated, JavaScript requires you to intentaionally call upon methods like `Array.slice` to do so.
 
 ## Arrays
 
@@ -315,7 +376,7 @@ user["isAdmin"] = false;
 
 Composite data structures (Arrays and Objects) allow programs to iterate through each item referenced in their data structure using the `for` statement. This process of stepping incrementally through each item in a set is called *enumeration*.
 
-**Arrays**
+**Enumerating Arrays**
 
 The most basic and reliable enumeration technique for an array is a sequential `for` loop that steps through each index position:
 
@@ -335,7 +396,7 @@ This `for` loop has three parts: an iterator, a condition, and an increment.
  
 JavaScript arrays provide some handy methods to simplify common `for` loop tasks. Research `forEach`, `map`, and `reduce` methods.
 
-**Objects**
+**Enumerating Objects**
 
 With objects, we have named keys to enumerate rather than sequential numeric indices. To access each named key, we use an alternate form of the `for` loop known as `for...in`.
 
@@ -508,6 +569,18 @@ var goBoom = function() {
 
 goBoom(); // BOOM!
 goBoom(); // BOOM!
+```
+
+Functions may recieve *arguments*, which are data parameters passed as variables into the function block:
+
+```
+var parrot = function(phrase) {
+  // This function receives one argument variable, called "phrase".
+  console.log(phrase);
+};
+
+parrot("Hello world."); // "Hello world."
+parrot("Poly want a cracker."); // "Poly want a cracker."
 ```
 
 We commonly use functions to *callback* after other operations complete:
