@@ -106,7 +106,7 @@ Strings may be *concatenated*, or joined together, using the `+` operator:
 "Hello World"
 ```
 
-All data types have built-in *methods*, or, functions provided my the JavaScript language for manipulating the data. We can call methods directly on data values to transform them. Strings provide many useful methods:
+Most data types have built-in *methods*, or, functions provided by the JavaScript language for manipulating the data. We call methods directly on data values to transform them. Strings provide many useful methods:
 
 ```javascript
 // Call the "toLowerCase" method of String data:
@@ -117,7 +117,7 @@ All data types have built-in *methods*, or, functions provided my the JavaScript
 "Hello World".slice(5) // "Hello"
 ```
 
-The methods available for a given data value is determined by its data type (in other words, Strings have a different set of built-in methods than Numbers).
+The methods available for a given data value is determined by its data type (in other words, strings have a different set of built-in methods than numbers).
 
 **Common String methods**:
 
@@ -142,7 +142,7 @@ Note that problems arise when attempting to perform numeric operations on mixed 
 23 + "50" // "2350" (whoops, we got string concatenation!)
 ```
 
-In the above example, math could not be performed on Number and String data together, so both values were converted to strings and concatenated. To fix this, we'd use one of JavaScript's provided methods for parsing the string into a proper number:
+In the above example, math could not be performed on number and string data together, so both values were converted to strings and concatenated. To fix this, we'd use one of JavaScript's provided methods for parsing the string into a proper number:
 
 ```javascript
 // Parse a string into a numeric integer:
@@ -151,6 +151,14 @@ In the above example, math could not be performed on Number and String data toge
 // Parse a string into a numeric floating-point decimal:
 100 * parseFloat("0.5") // 50
 ```
+
+An oddity of the number data type is the special value `NaN`, which represents "Not a Number". You'll commonly get `NaN` after trying to perform impossible arithmatic operations:
+
+```javascript
+23 / 0 // NaN
+```
+
+You can check the outcome of math operations for `NaN` using JavaScript's `isNaN()` function. Likewise, this same pattern applies for the less common (and more bizarre) `Infinity` number value, which can be recognized using the `isFinite()` function.
 
 ## Variables
 
@@ -237,20 +245,20 @@ While this process looks simple enough, it's actually very important to understa
 
 **Primitive data is passed by value.**
 
-For Strings, Numbers, and Booleans, data values are *copied* between variables. Each variable will get a unique piece of data with the same primitive value:
+For strings, numbers, and booleans, variables point at the datum itself. Suffice it to say, passing by value works just the way you'd expect:
 
 ```javascript
 var a = 10;
 var b = a;
 
 a += 1; // <-- Modify variable A.
-a; // 11 <-- A was modified.
-b; // 10 <-- B was NOT. It's still a copy of A's original value.
+a; // 11 <-- A now holds a new value, 11.
+b; // 10 <-- B still holds the original value, 10.
 ```
  
 **Composite data is passed by reference.**
 
-Arrays and Objects can grow extremely large. Making copies of these large data structures can be slow, and duplicate copies will quickly consume memory. Therefore, composite data structures are *referenced* between variables:
+For arrays and objects, variables point at the memory address (think of your highschool locker number) where the datum is stored. This means multiple variables will all reference a single datum:
 
 ```javascript
 var a = [];
@@ -261,9 +269,7 @@ a.length; // 1 <-- A has one item.
 b.length; // 1 <-- B has one item.
 ```
 
-The above demonstrates how multiple variables will reference the same underlying data structure. Modifications to the underlying data are present among all aliases.
-
-While composite data structures *can* be duplicated, JavaScript requires you to intentaionally call upon methods like `Array.slice` to do so.
+The above demonstrates how multiple variables will reference the same underlying array instance. Modifications to the underlying datum are visible through all variable aliases. While composite data structures *can* be duplicated into unique variables, JavaScript requires you to intentaionally do so.
 
 ## Arrays
 
