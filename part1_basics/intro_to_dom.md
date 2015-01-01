@@ -95,7 +95,8 @@ To monitor user input, we select the element that we're interested in and call u
  - `"click"`: triggered when elements are clicked.
  - `"input"`: triggered when an input form element recieves input.
  - `"change"`: triggered when an input element changes value.
- - `"submit"`: triggered by a form element when it is submitted.
+ - `"submit"`: triggered by a form element upon submission.
+ - `"keydown"`: triggered when the user presses a keyboard key.
 
 ### The Event Object
 
@@ -115,4 +116,24 @@ When we bind an event handler, that function may declare an argument (usually ca
  </script>
 ```
 
-The Event Object contains all sorts of useful data detailing the state of the browser at the time the event occured. It includes the coordinates of the cursor, the keyboard code of a keystroke, other control keys pressed at the time of the event, etc. See [event documentation](https://developer.mozilla.org/en-US/docs/Web/API/Event) for a complete summary of event data.
+The Event object contains useful data detailing the state of the browser at the time the event occured, including the coordinates of the cursor, a keystroke code, other control keys pressed, etc. The Event object also allows us to cancel the browser's default handling of the event by calling the event's `preventDefault` method:
+
+```html
+<form id="login-form">
+  <label>Email <input type="text"></label>
+  <label>Password <input type="password"></label>
+  <input type="submit" value="Sign In">
+</form>
+ 
+ <script>
+   var loginFormEl = document.querySelector('#login-form');
+   
+   loginFormEl.addEventListener('submit', function(evt) {
+     // Don't let the form submit via the browser:
+     evt.preventDefault();
+     // ... we'll write a custom submit process here ...
+   });
+ </script>
+```
+
+See [event documentation](https://developer.mozilla.org/en-US/docs/Web/API/Event) for a complete summary of event data and methods.
