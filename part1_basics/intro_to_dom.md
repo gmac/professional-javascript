@@ -119,19 +119,15 @@ When we bind an event handler, that function may declare an argument (usually ca
 The Event object contains useful data detailing the state of the browser at the time the event occured, including the coordinates of the cursor, a keystroke code, other control keys pressed, etc. The Event object also allows us to cancel the browser's default handling of the event by calling the event's `preventDefault` method:
 
 ```html
-<form id="login-form">
-  <label>Email <input type="text"></label>
-  <label>Password <input type="password"></label>
-  <input type="submit" value="Sign In">
-</form>
+<a href="/home" id="home-link">Home</a>
  
  <script>
-   var loginFormEl = document.querySelector('#login-form');
+   var homeLinkEl = document.querySelector('#home-link');
    
-   loginFormEl.addEventListener('submit', function(evt) {
-     // Don't let the form submit via the browser:
+   homeLinkEl.addEventListener('click', function(evt) {
+     // Don't let the browser follow the clicked link URL:
      evt.preventDefault();
-     // ... we'll write a custom submit process here ...
+     // ... instead, we'll just use the link to perfom actions on this page ...
    });
  </script>
 ```
