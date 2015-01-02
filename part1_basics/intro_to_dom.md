@@ -116,7 +116,7 @@ When we bind an event handler, that function may declare an argument (usually ca
  </script>
 ```
 
-The Event Object contains useful data detailing the state of the browser at the time the event occured, including the coordinates of the cursor, the keystroke code, other control keys pressed, etc. The event object also allows us to cancel the browser's default for an event using the `preventDefault` method:
+The Event Object contains useful data detailing the state of the browser at the time the event occured, including the coordinates of the cursor, the keystroke code, other control keys pressed, etc. The event object also allows us to cancel the browser's default behavior for an event using the `preventDefault` method:
 
 ```html
 <a href="/home" id="home-link">Home</a>
