@@ -432,7 +432,7 @@ This `for...in` loop has two parts: an iterator, and an object.
  - The **iterator** variable will assume the value of each *key* as the loop runs.
  - The **object** specifies what data structure to loop through the keys of.
 
-Now, this simpler `for...in` loop technically works on arrays as well, however it cannot guarantee the order in which keys are accessed. For named object keys, we're generally not concerned with access order. For ordered arrays though, it's generally safest to use a sequential `for` loop.
+Now, this simpler `for...in` loop technically works on arrays as well, however it cannot guarantee the order in which keys are accessed. For named object keys, we're generally not concerned with order. For ordered arrays though, it's generally safest to use a sequential `for` loop.
 
 ## Conditionals
 
@@ -464,7 +464,7 @@ if (a > b) {
 }
 ```
 
-When structuring multi-clause conditionals, just remember that only ONE block will ever be allowed to run during program execution.
+When structuring multi-clause conditionals, just remember that ONLY ONE block will ever be allowed to run during program execution.
 
 ### Data Truthiness
 
@@ -551,7 +551,7 @@ The `&&` ("And") operator combines multiple assessments. Assessments may be wrap
 var orders = ['Banana Sandwich'];
 
 if (orders.length && (orders.length < 10)) {
-  // If we have orders, and the quantity is less than ten...
+  // If we have orders, AND the quantity is less than ten...
   // This block RUNS because:
   // - Orders length is 1 (truthy), AND...
   // - Orders length is less than 10 (truthy)
@@ -566,7 +566,7 @@ The `||` ("Or") operator checks multiple assessments, and requires that at least
 var orders = [];
 
 if (!orders.length || (orders.length > 10) {
-  // If we have no orders, or we have more than 10 orders...
+  // If we have no orders, OR we have more than 10 orders...
   // This block RUNS because:
   // - (!orders.length) is truthy, OR...
   // - (orders.length > 10) is falsey
@@ -588,7 +588,7 @@ goBoom(); // BOOM!
 
 Functions may receive *arguments*, which are data parameters passed as variables into the function block:
 
-```
+```javascript
 var parrot = function(phrase) {
   // This function receives one argument variable, called "phrase".
   console.log(phrase);
