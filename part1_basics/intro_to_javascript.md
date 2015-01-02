@@ -14,11 +14,11 @@
 
 ## What IS JavaScript?
 
-JavaScript was originally developed in May 1995, over the course of 10 days, by Brendan Eich (now of Mozilla) while working on Netscape Navigator. It was designed as a simple browser scripting langauge that would allow web developers to interact more closely with the Netscape web browser.
+JavaScript was originally developed in May 1995, over the course of 10 days, by Brendan Eich (now of Mozilla) while working on Netscape Navigator. It was designed as a simple browser scripting language that would allow web developers to interact more closely with the Netscape web browser.
 
 To debunk a myth: the JavaScript language is in NO WAY related to the Java programming language. In fact, JavaScript was originally called "LiveScript", but was regrettably renamed by the Netscape marketing team to piggy-back off the 90's vogue of Java. The name "JavaScript" has been confused ever since.
 
-JavaScript quickly gained universal adoption among web browsers, making it the ubiquitous solution for client-side (browser-based) application programming. Then in 2012, NodeJS brought JavaScript to the server, making it a full-stack language. At present, JavaScript is among the most prevelant languages used in web development.
+JavaScript quickly gained universal adoption among web browsers, making it the ubiquitous solution for client-side (browser-based) application programming. Then in 2012, NodeJS brought JavaScript to the server, making it a full-stack language. At present, JavaScript is among the most prevalent languages used in web development.
 
 ---
 
@@ -127,7 +127,7 @@ The methods available for a given data value is determined by its data type (in 
   
 ### Number Operations & Methods
 
-A **Number** manages a numeric value. These may be integers (whole numbers) or decimals. Numbers allow basic arithmatic using the `+`, `-`, `*`, and `\` operators:
+A **Number** manages a numeric value. These may be integers (whole numbers) or decimals. Numbers allow basic arithmetic using the `+`, `-`, `*`, and `\` operators:
 
 ```javascript
 4 + 2 // 6 (addition)
@@ -142,7 +142,7 @@ Note that problems arise when attempting to perform numeric operations on mixed 
 23 + "50" // "2350" (whoops, we got string concatenation!)
 ```
 
-In the above example, math could not be performed on number and string data together, so both values were converted to strings and concatenated. To fix this, we'd use one of JavaScript's provided methods for parsing the string into a proper number:
+In the above example, arithmetic could not be performed on number and string data together, so both values were converted to strings and concatenated. To fix this, we'd use one of JavaScript's provided methods for parsing the string into a proper number:
 
 ```javascript
 // Parse a string into a numeric integer:
@@ -152,17 +152,17 @@ In the above example, math could not be performed on number and string data toge
 100 * parseFloat("0.5") // 50
 ```
 
-An oddity of the number data type is the special value `NaN`, which represents "Not a Number". You'll commonly get `NaN` after trying to perform impossible arithmatic operations:
+An oddity of the number data type is the special value `NaN`, which represents "Not a Number". You'll commonly get `NaN` after trying to perform impossible arithmetic operations:
 
 ```javascript
 23 / 0 // NaN
 ```
 
-You can check the outcome of math operations for `NaN` using JavaScript's `isNaN()` function. Likewise, this same pattern applies for the less common (and more bizarre) `Infinity` number value, which can be recognized using the `isFinite()` function.
+You can check the outcome of math operations for `NaN` using JavaScript's `isNaN()` function. Likewise, this same pattern applies for the less common `Infinity` number value, which can be recognized using the `isFinite()` function.
 
 ## Variables
 
-Data values may be assigned custom labels called **Variables**. Think of a variable as a name tag for a piece of data. A single value may have many variables referring to it.
+A **Variable** is a named alias referring to a single piece of data (or, "datum"). Think of a variable as a "Hello my name is..." label for a datum. A single datum may have many variable names referring to it.
 
 **Declaration & Assignment**
 
@@ -195,7 +195,7 @@ In JavaScript, variable names should be formatted using *headless camel case* (i
 var headlessCamelCase = "Correct.";
 ```
 
-Also note that JavaScript naming is case-sensative. That means names with different capitalizations are treated as different variables:
+Also note that JavaScript naming is case-sensitive. That means names with different capitalizations are treated as different variables:
 
 ```javascript
 // Be careful, these are separate variables due to capitalization:
@@ -258,7 +258,7 @@ b; // 10 <-- B still holds the original value, 10.
  
 **Composite data is passed by reference.**
 
-For arrays and objects, variables point at the memory address (think of your highschool locker number) where the datum is stored. This means multiple variables will all reference a single datum:
+For arrays and objects, variables point at the memory address (think of your high school locker number) where the datum is stored. This means multiple variables will all reference a single datum:
 
 ```javascript
 var a = [];
@@ -269,7 +269,7 @@ a.length; // 1 <-- A has one item.
 b.length; // 1 <-- B has one item.
 ```
 
-The above demonstrates how multiple variables will reference the same underlying array instance. Modifications to the underlying datum are visible through all variable aliases. While composite data structures *can* be duplicated into unique variables, JavaScript requires you to intentaionally do so.
+The above demonstrates how multiple variables will reference the same underlying array instance. Modifications to the underlying datum are visible through all variable aliases. While composite data structures *can* be duplicated into unique variables, JavaScript requires you to intentionally do so.
 
 ## Arrays
 
@@ -358,7 +358,7 @@ var user = {
 };
 ```
 
-When accessing data stored on an object, we can use dot syntax or bracket syntax (dot syntax is generally preferred for clenliness):
+When accessing data stored on an object, we can use dot syntax or bracket syntax (dot syntax is generally preferred for cleanliness):
 
 ```javascript
 // Dot syntax:
@@ -406,7 +406,7 @@ for (var i=0; i < heros.length; i++) {
 This `for` loop has three parts: an iterator, a condition, and an increment.
 
  - The **iterator** maintains a counter for stepping through array indices.
- - The **condition** determins when the loop has completed and should exit.
+ - The **condition** determines when the loop has completed and should exit.
  - The **increment** advances the iterator at the end of each loop cycle.
  
 JavaScript arrays provide some handy methods to simplify common `for` loop tasks. Research `forEach`, `map`, and `reduce` methods.
@@ -432,7 +432,7 @@ This `for...in` loop has two parts: an iterator, and an object.
  - The **iterator** variable will assume the value of each *key* as the loop runs.
  - The **object** specifies what data structure to loop through the keys of.
 
-Now, this simpler `for...in` loop technically works on arrays as well, however it cannot guarentee the order in which keys are accessed. For named object keys, we're generally not concerned with access order. For ordered arrays though, it's generally safest to use a sequential `for` loop.
+Now, this simpler `for...in` loop technically works on arrays as well, however it cannot guarantee the order in which keys are accessed. For named object keys, we're generally not concerned with access order. For ordered arrays though, it's generally safest to use a sequential `for` loop.
 
 ## Conditionals
 
@@ -508,10 +508,10 @@ a < b     Less than. Is A less than B?
 a <= b    Less than or Equal. Is A less than OR equal to B?
 
 a > b     Greater than. Is A greater than B?
-a >= b    Geater than or Equal. Is A greater than OR equal to B?
+a >= b    Greater than or Equal. Is A greater than OR equal to B?
 ```
 
-Comparison operations also yeild booleans (true or false). We'll frequently perform comparisons directly inside of conditional statements:
+Comparison operations also yield booleans (true or false). We'll frequently perform comparisons directly inside of conditional statements:
 
 ```javascript
 var age = 18;
@@ -586,7 +586,7 @@ goBoom(); // BOOM!
 goBoom(); // BOOM!
 ```
 
-Functions may recieve *arguments*, which are data parameters passed as variables into the function block:
+Functions may receive *arguments*, which are data parameters passed as variables into the function block:
 
 ```
 var parrot = function(phrase) {
