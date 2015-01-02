@@ -1,4 +1,4 @@
-# JavaScript Functions
+# The Abyss of JavaScript Functions
 
 **Learning Objectives**
 
@@ -9,7 +9,7 @@
 - What is context?
 - What is invocation? How is it done?
 
-# 1. The Sunlight Zone
+# Part 1. The Sunlight Zone
 
 ## Named and Anonymous Functions
 
