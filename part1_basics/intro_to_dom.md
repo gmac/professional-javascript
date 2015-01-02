@@ -23,7 +23,7 @@ The DOM allows us to dynamically respond to and manipulate a web page. Generally
 
 2. We **exchange data** with the DOM: this involves reading data from specific elements, and/or writing new data into the DOM structure.
 
-3. We **observe** the DOM for user interactions, and then respond to events such as text input or button clicks.
+3. We **listen to** the DOM for user interactions, and then respond to events (such as clicks and text input).
 
 ## Selecting Elements
 
@@ -69,9 +69,9 @@ Once we've selected the DOM elements that we're interested in, we can get and/or
  - `getAttribute(attr)`: gets an attribute value of the element.
  - `setAttribute(attr, value)`: sets the value of an attribute.
  
-## Observing User Interaction
+## Listening For User Interaction
 
-To make our applications interactive, we need to know when the user interacts with the DOM (ie: clicking buttons, entering text, etc). Thankfully, the DOM does all the heavy lifting of tracking input for us. The DOM then fires off an **event**, or notification, when an interaction occurs that we can tell JavaScript to *listen* for:
+To make our applications interactive, we need to know when the user interacts with the DOM (ie: clicking elements, entering text, etc). Thankfully, the DOM does all the heavy lifting of tracking user input for us. The DOM then fires off an **event**, or notification, when an interaction occurs. We use JavaScript to *listen to* the DOM for these event notifications:
 
 ```html
  <button id="done">I'm Done</button>
@@ -85,7 +85,7 @@ To make our applications interactive, we need to know when the user interacts wi
  </script>
 ```
 
-To monitor user input, we select the element that we're interested in and call upon it's `addEventListener` method to bind an event. The `addEventListener` method takes two parameters:
+To monitor user input, we select an element that we're interested in and then use `addEventListener` to bind an event. The `addEventListener` method takes two parameters:
 
  - The **event name** to listen for.
  - A **handler function** (callback) to run when the event occurs.
@@ -116,7 +116,7 @@ When we bind an event handler, that function may declare an argument (usually ca
  </script>
 ```
 
-The Event object contains useful data detailing the state of the browser at the time the event occured, including the coordinates of the cursor, a keystroke code, other control keys pressed, etc. The Event object also allows us to cancel the browser's default handling of the event by calling the event's `preventDefault` method:
+The Event Object contains useful data detailing the state of the browser at the time the event occured, including the coordinates of the cursor, the keystroke code, other control keys pressed, etc. The event object also allows us to cancel the browser's default for an event using the `preventDefault` method:
 
 ```html
 <a href="/home" id="home-link">Home</a>
@@ -127,7 +127,7 @@ The Event object contains useful data detailing the state of the browser at the 
    homeLinkEl.addEventListener('click', function(evt) {
      // Don't let the browser follow the clicked link URL:
      evt.preventDefault();
-     // ... instead, we'll just use the link to perfom actions on this page ...
+     // ... instead, we'll just use the link to perfom custom actions on this page ...
    });
  </script>
 ```
