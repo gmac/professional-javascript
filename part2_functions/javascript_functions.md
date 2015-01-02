@@ -59,7 +59,7 @@ In this case, we're invoking the function with two parameters: `(10, 15)`. These
 
 ### The `arguments` Object
 
-Whenever a function is invoked, its scope is configured with a special array-like object called `arguments`. This arguments object contains all parameters that were passed into the function.
+Whenever a function is invoked, its scope is configured with a special array-like object called `arguments`. This arguments object contains all parameters that were passed into the function:
 
 ```javascript
 function printName(first, last) {
@@ -67,12 +67,12 @@ function printName(first, last) {
   console.log(arguments[1]);
 }
 
-printName('Beep', 'Beeperson');
-// -> "Beep"
-// -> "Beeperson"
+printName('Luke', 'Skywalker');
+// -> "Luke"
+// -> "Skywalker"
 ```
 
-The arguments object is available even if the function block defines no arguments. This allows a function to operate upon an unknown set of arguments.
+The arguments object is available even if the function block defines no arguments. This allows a function to operate upon an unknown set of arguments:
 
 ```javascript
 function printName() {
@@ -80,9 +80,9 @@ function printName() {
   console.log(arguments[1]);
 }
 
-printName('Beep', 'Beeperson');
-// -> "Beep"
-// -> "Beeperson"
+printName('Luke', 'Skywalker');
+// -> "Luke"
+// -> "Skywalker"
 ```
 
 The oddity of the `arguments` object is that it looks like an Array (with numeric keys and a `length` property), but is actually an Object. If you ever want to convert the arguments object into an *actual* array, use this little trick:
