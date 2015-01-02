@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gryffindor House</title>
+    <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    body {
+      background: black url(http://fc01.deviantart.net/fs71/i/2011/197/c/9/gryffindor_flag_by_kooro_sama-d3ud5ym.png) no-repeat center center;
+      background-size: cover;
+      color: white;
+      font: bold 16px/2 "Helvetica Neue", Helvetica, sans-serif;
+      text-align: center;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    }
+    </style>
+  </head>
+  <body>
+    <p>(Work in the JavaScript Console)</p>
+    <script>
+    var Gryffindor = {
+      students: [],
+
+      // 1) Add a new student object to the "students" array:
+      // a student object should be formatted as...
+      // {name: "Harry Potter", points: 0}
+      //
+      // This method would be invoked as:
+      // -> Gryffindor.addStudent("Harry Potter");
+      //
+      addStudent: function(name) {
+        this.students.push({
+          name: name,
+          points: 0
+        });
+      },
+
+      // 1.BONUS) Add any number of new student objects to the "students" array:
+      // you'll need to loop through arguments and call "addStudent" for each name.
+      //
+      // This method would be invoked as:
+      // -> Gryffindor.addStudents("Ron Weasley", "Hermionie Granger");
+      //
+      addStudents: function() {
+        for (var i=0; i < arguments.length; i++) {
+          this.addStudent(arguments[i]);
+        }
+      },
+
+      // 2) Get an existing student object by name from the array of students:
+      // you'll need to loop through the students array until you find a student with a matching name.
+      //
+      // This method would be invoked as:
+      // -> Gryffindor.getStudent("Harry Potter");
+      // And should return:
+      // -> {name: "Harry Potter", points: 0}
+      //
+      getStudent: function(name) {
+        for (var i=0; i < this.students.length; i++) {
+          if (this.students[i].name === name) {
+            return this.students[i];
+          }
+        }
+      },
+
+      // 3) Get a student by name, and then add points to that student:
+      // use the "getStudent" method to access the student object, and then add points to it.
+      //
+      // This method would be invoked as:
+      // -> Gryffindor.awardPointsTo("Harry Potter", 50);
+      //
+      awardPointsTo: function(name, points) {
+        var student = this.getStudent(name);
+        if (student) {
+          student.points += points;
+        }
+      },
+
+      // 4) Get total points among all students in the house:
+      // you'll need to loop through all student objects and tally up their points.
+      //
+      // This method would be invoked as:
+      // -> Gryffindor.getHousePoints();
+      //
+      getHousePoints: function() {
+        var points = 0;
+        for (var i=0; i < this.students.length; i++) {
+          points += this.students[i].points;
+        }
+        return points;
+      }
+    };
+    </script>
+  </body>
+</html>
