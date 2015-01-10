@@ -387,6 +387,14 @@ user.badges[0]; // "Destroyer of Worlds"
 user.userGroup.name; // "Imperial Forces"
 ```
 
+We frequently want to know if an object has a named property on *itself* (this is an important distinction for reasons we won't go into here). To check for a named property, use the handy `hasOwnProperty` method:
+
+```javascript
+var obj = {name: 'Luke Skywalker', age: 19};
+obj.hasOwnProperty('name'); // true
+obj.hasOwnProperty('points'); // false
+```
+
 ## Enumeration (`for` loops)
 
 Composite data structures (Arrays and Objects) allow programs to iterate through each item referenced in their data structure using the `for` statement. This process of stepping incrementally through each item in a set is called *enumeration*.
