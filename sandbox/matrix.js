@@ -1,0 +1,3 @@
+// You may write JavaScript here...
+
+console.log('Hello World.');
