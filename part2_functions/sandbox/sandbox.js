@@ -1,3 +1,3 @@
 // You may write JavaScript here...
 
-console.log('Konnichiwa.');
+console.log('Ready to dive.');
