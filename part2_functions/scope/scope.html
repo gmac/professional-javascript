@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>scope</title>
+  </head>
+  <body>
+    <h1>scope</h1>
+    <script type='text/javascript'>
+
+    function washington() {
+      console.log("entering washington");
+      var mayor = "Greg";
+      //var population = 500;
+      president = "Obama";
+      
+      function navyYard() {
+        console.log("entering Navy Yard");
+        //console.log(population);
+        console.log(mayor);
+
+        // var mayor = "Peter";
+        population = 100;
+
+        console.log(population);
+        console.log("leaving Navy Yard");
+      }
+
+      navyYard();
+
+      console.log(mayor);
+      console.log(population);
+      console.log("leaving washington");
+    }
+
+    washington(); 
+
+    </script>
+  </body>
+</html>
