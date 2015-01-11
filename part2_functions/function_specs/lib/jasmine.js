@@ -261,6 +261,7 @@ getJasmineRequireObj().Spec = function(j$) {
   };
 
   Spec.prototype.expect = function(actual) {
+    this.hasExpectation = true;
     return this.expectationFactory(actual, this);
   };
 
@@ -348,7 +349,7 @@ getJasmineRequireObj().Spec = function(j$) {
       return 'disabled';
     }
 
-    if (this.markedPending) {
+    if (this.markedPending || !this.hasExpectation) {
       return 'pending';
     }
 

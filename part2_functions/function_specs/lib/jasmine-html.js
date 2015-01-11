@@ -50,10 +50,10 @@ jasmineRequire.HtmlReporter = function(j$) {
 
     this.initialize = function() {
       htmlReporterMain = createDom("div", {className: "html-reporter"},
-        createDom("div", {className: "banner"},
-          createDom("span", {className: "title"}, "Jasmine"),
-          createDom("span", {className: "version"}, j$.version)
-        ),
+        //createDom("div", {className: "banner"},
+          //createDom("span", {className: "title"}, "Jasmine"),
+          //createDom("span", {className: "version"}, j$.version)
+        //),
         createDom("ul", {className: "symbol-summary"}),
         createDom("div", {className: "alert"}),
         createDom("div", {className: "results"},
@@ -134,7 +134,7 @@ jasmineRequire.HtmlReporter = function(j$) {
 
     this.jasmineDone = function() {
       var banner = find(".banner");
-      banner.appendChild(createDom("span", {className: "duration"}, "finished in " + timer.elapsed() / 1000 + "s"));
+      //banner.appendChild(createDom("span", {className: "duration"}, "finished in " + timer.elapsed() / 1000 + "s"));
 
       var alert = find(".alert");
 
