@@ -1,4 +1,4 @@
-# JavaScript Basics
+# JavaScript Fundamentals
 
 **Learning Objectives**
 

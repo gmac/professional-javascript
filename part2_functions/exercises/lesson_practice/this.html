@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>this</title>
+  <style>
+  body { font: 18px/1.5 'Helvetica Neue', Helvetica, sans-serif; margin: 50px auto; max-width: 600px; padding: 0 20px; }
+  </style>
+</head>
+<body>
+  <h1>this</h1>
+  <p>Take 5 minutes to read through the JavaScript in this file. What do you expect to be printed into the console? Then examine the console output and explain why each line prints what it does.</p>
+  
+  <script>
+
+  console.log('1');
+  console.log(this);
+
+  var color = 'green';
+
+  function sayColor(){
+    console.log(this);
+    console.log(this.color);
+  }
+
+  console.log('2');
+  sayColor();
+
+  var apple = {color: 'red'};
+
+  console.log('3');
+  sayColor.call(apple);
+
+  var banana = {color: 'yellow'};
+  banana.sayMyColor = sayColor;
+
+  console.log('4');
+  console.log(banana);
+
+  console.log('5');
+  banana.sayMyColor();
+
+  var puppy = {
+    name: 'fluffy',
+    bark: function() {
+      console.log(this);
+    },
+    sayName: function() {
+      console.log(this.name);
+    }
+  };
+
+  console.log('6');
+  console.log(puppy);
+
+  console.log('7');
+  puppy.bark();
+
+  console.log('8');
+  puppy.sayName();
+
+  var kitten = {
+    name: 'mittens',
+    friend: puppy,
+    introduceFriend: function() {
+      console.log(this);
+      this.friend.bark();
+      console.log(this);
+    }
+  };
+
+  console.log('9');
+  console.log(kitten);
+
+  console.log('10');
+  kitten.introduceFriend();
+
+  </script>
+</body>
+</html>

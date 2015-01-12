@@ -1,36 +1,42 @@
 # Professional JavaScript
 
-Workshop Schedule:
+Syllabus
 
-## Part 1: Fundamentals
-**Saturday, January 10**
+## Day 1: Fundamentals
 
-Morning:
+**Morning**
 
  - Introduction
- - Data Types
- - Variables
- - Arrays & Objects
- - Enumeration
- - Conditionals
+ - JavaScript Fundamentals
+	 - Datatypes
+	 - Variables
+	 - Conditionals
+	 - Arrays & Objects
+	 - Enumeration
 
-Afternoon:
+**Afternoon**
 
  - Simple Functions
  - Intro to DOM
+   - Selecting elements
+   - Reading and writing data
+   - Binding event handlers
  - Lab exercises
 
-## Part 2: Functions Deep-Dive
-**Sunday, January 11**
+## Day 2: Functions & Object-Orientation
 
-Morning:
+**Morning**
 
- - Arguments & Return
- - First-Class Function
- - Closure & Scope
- - Contextual Invocation ("this")
+ - Introduction
+ - Part 1: Basic Functions
+   - Arguments & Return
+   - Invocation vs. Reference
+   - Declaration vs. Assignment
+   - Functions as first-class objects
+ - Part 2: Closure & Scope
+ - Part 3: Contextual Invocation ("this")
 
-Afternoon:
+**Afternoon**
 
- - Libraries as tools
- - Lab project
+ - Lesson practice (scope & "this")
+ - Lab exercises

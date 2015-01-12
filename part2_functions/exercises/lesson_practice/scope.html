@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>scope</title>
+  <style>
+  body { font: 18px/1.5 'Helvetica Neue', Helvetica, sans-serif; margin: 50px auto; max-width: 600px; padding: 0 20px; }
+  </style>
+</head>
+<body>
+  <h1>scope</h1>
+  <p>Take 5 minutes and read through the JavaScript in this file. What do you expect to be printed into the console? Then examine the console output and explain why each line prints what it does.</p>
+  <p>Also try commenting and uncommenting different lines and think about what the <tt>var</tt> keyword does.</p>
+
+  <script>
+
+  function washington() {
+    console.log("Entering Washington");
+    var mayor = "Greg";
+    //var population = 500;
+    president = "Obama";
+    
+    function navyYard() {
+      console.log("Entering Navy Yard");
+      //console.log(population);
+      console.log(mayor);
+
+      // var mayor = "Peter";
+      population = 100;
+
+      console.log(population);
+      console.log("Leaving Navy Yard");
+    }
+
+    function easternMarket() {
+      console.log("Entering Eastern Market");
+
+      var population = 300;
+      var mayor = "Travis";
+
+      console.log("Leaving Eastern Market");
+    }
+
+    navyYard();
+    // easternMarket();
+
+    console.log(mayor);
+    console.log(population);
+    console.log("Leaving Washington");
+  }
+
+  washington(); 
+
+  </script>
+</body>
+</html>
