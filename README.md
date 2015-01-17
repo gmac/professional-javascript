@@ -48,6 +48,7 @@ Our second session will take a deep-dive into the exceptionally unique aspect of
    - Functions as first-class objects
  - Part 2: Closure & Scope
  - Part 3: Contextual Invocation ("this")
+ - Part 4: Prototypal Inheritance
 
 **Afternoon**
 
