@@ -27,11 +27,11 @@ function() {
 
 Typical uses:
 
- * **Named functions** are generally program fixtures (constructor functions, helper methods).
+ * **Named functions** are generally program fixtures (helper methods, constructor functions).
  
  * **Anonymous functions** are generally program data (passed callbacks, stored methods).
  
-## Arguments, Return, & Invocation
+## Arguments & Return
 
 Functions accept passed **arguments**, and may **return** a value:
 
@@ -46,7 +46,6 @@ function add(a, b) {
 - This is a named function: `function add() {}`
 - It accepts two argument variables: `(a, b)`
 - It returns a calculation: `return a + b;`
-
 
 To run the function, we must *invoke* it (AKA, "call" it):
 
@@ -72,7 +71,7 @@ printName('Luke', 'Skywalker');
 // -> "Skywalker"
 ```
 
-The arguments object is available even if the function block defines no arguments. This allows a function to operate upon an unknown set of arguments:
+The arguments object is available even if the function block declares no arguments. This allows a function to operate upon an unknown set of arguments. This is called *overloading*:
 
 ```javascript
 function printName() {
@@ -85,7 +84,7 @@ printName('Luke', 'Skywalker');
 // -> "Skywalker"
 ```
 
-The oddity of the `arguments` object is that it looks like an Array (with numeric keys and a `length` property), but is actually an Object. If you ever want to convert the arguments object into an *actual* array, use this little trick:
+The oddity of the `arguments` object is that it looks like an Array (with numeric keys and a `length` property), but it is actually an Object. Why isn't it an array? Well, `arguments` has one aditional property (`callee`) which makes it slightly unique. Also, arrays only had four methods back in 1995, so their advantages over Object were negligable. If you ever want to convert the arguments object into an *actual* array, use this little trick:
 
 ```javascript
 function() {
@@ -93,11 +92,53 @@ function() {
 }
 ```
 
-## First-Class Functions
+## Reference vs. Invocation
+
+A function may be referenced or invoked... write more here.
+
+## Declaration vs. Assignment
+
+Look at the two scenarios below. While they may appear to be functionally identical, they will actually be subject to different language rules that can affect their behavior:
+
+**Declaration – a named function *declaration*:**
+
+```javascript
+function goBoom() {
+  console.log("boom");
+}
+```
+
+**Assignment – an anonymous function *assigned* to a variable:**
+
+```javascript
+var goBoom = function() {
+  console.log("boom");
+};
+```
+
+What's the difference? Declarations are effectively omnipresent within their *scope* (discussed later), and thus may be called upon at any time. Assignments, on the other hand, are only available *after they've been set*. For example:
+
+```javascript
+// Declaration:
+goBoomD(); // "boom"
+
+function goBoomD() {
+  console.log("boom");
+}
+
+// Assignment:
+goBoomA(); // !!! TypeError: undefined is not a function
+
+var goBoomA = function() {
+  console.log("boom");
+};
+```
+
+The above demonstrates how a declaration may be invoked before its definition, whereas an assignment remains dependend on execution order. The technical rationale here is called *hoisting*, and will be explored in depth later. As a general rule, use declarations unless you specifically need to manage assignment order. Note that function and variable declarations will become very important as we proceed into scoping rules.
+
+## Functions as First-Class objects
 
 In computer science, a programming language is said to have first-class functions when it treats them as "first-class citizens". This means functions are considered a full-fledged data type, versus just being runnable blocks of code.
-
-**TODO:** Explain the difference between calling and referencing a function in JavaScript.
 
 In JavaScript, functions are *objects* just like every other data type, and can therefore be used interchangeably with other data. Uses of first-class functions include:
 
@@ -243,31 +284,9 @@ To avoid naming conflicts, we want to minimize our footprint of data stored with
 
 What is an IIFE? It's just an anonymous function that invokes itself. However, that IIFE provides a new closure in which you can safely write JavaScript code without cluttering global scope.
 
-## Declaration vs. Assignment
+### Hoisting
 
-Look at the two scenarios below. While they may appear to be functionally identical, they will actually be subject to different language rules that could affect their behavior:
-
-**Declaration – a named function *declaration*:**
-
-```javascript
-function goBoom() {
-  console.log("boom");
-}
-```
-
-**Assignment – an anonymous function *assigned* to a variable:**
-
-```javascript
-var goBoom = function() {
-  console.log("boom");
-};
-```
-
-What's the difference? Declarations may be called upon *anywhere within their scope*, whereas assignments are only available *after they've been set*. As a general rule, use declarations unless you specifically need to manage assignment order.
-
-## Hoisting
-
-Here's the technical rationale behind declarations versus assignment... When a new scope is configured, all declarations are *hoisted* to the top of the scope. Assignment order is not changed.
+Remember the distinction between declaration and assignment? Well here's the technical rationale: when a new scope is configured, all declarations are *hoisted* to the top of the scope. Assignment order is not changed.
 
 Consider the following:
 
@@ -288,9 +307,7 @@ Consider the following:
 })();
 ``` 
 
-If we run this example, the `beep` function successfully runs while the `bop` function throws an error. Why?
-
-Behind the scenes, the JavaScript compiler has hoisted our declarations, while leaving all original assignment order unchanged:
+If we run this example, the `beep` function successfully runs while the `bop` function throws an error. Why? Behind the scenes, the JavaScript compiler has hoisted our declarations, while leaving all original assignment order unchanged:
 
 ```javascript
 // The same code as JAVASCRIPT sees it:
