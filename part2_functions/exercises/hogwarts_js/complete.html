@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gryffindor House</title>
+    <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    body {
+      background: black url(http://img2.wikia.nocookie.net/__cb20091002190049/harrypotter/images/7/7d/Hogwarts_3.jpg) no-repeat center center;
+      background-size: cover;
+      color: white;
+      font: bold 16px/2 "Helvetica Neue", Helvetica, sans-serif;
+      text-align: center;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    }
+    </style>
+  </head>
+  <body>
+    <p>(Work in the JavaScript Console)</p>
+    <script>
+
+    // PART 1
+    // Gryffindor becomes a generic "House" 
+    // ------------------------------------
+    //
+    // 1) Turn the Gryffindor object into an instanceable House object...
+    // (the House constructor function is below)
+    // Make the House assign itself a name and a unique "students" array,
+    // and then set the former Gryffindor object as the House prototype.
+    //
+    // This House constructor will be invoked as:
+    // var house = new House('Gryffindor');
+    //
+    function House(name) {
+      this.name = name;
+      this.students = [];
+    }
+
+    House.prototype = {
+      // Adds a new student object to the "students" array:
+      addStudent: function(name) {
+        this.students.push({
+          name: name,
+          points: 0
+        });
+      },
+
+      // Adds any number of new student objects to the "students" array:
+      addStudents: function() {
+        for (var i=0; i < arguments.length; i++) {
+          this.addStudent(arguments[i]);
+        }
+      },
+
+      // Gets an existing student object by name from the array of students:
+      getStudent: function(name) {
+        for (var i=0; i < this.students.length; i++) {
+          if (this.students[i].name === name) {
+            return this.students[i];
+          }
+        }
+      },
+
+      // Gets a student by name, and then add points to that student:
+      awardPointsTo: function(name, points) {
+        var student = this.getStudent(name);
+        if (student) {
+          student.points += points;
+        }
+      },
+
+      // Gets total points among all students in the house:
+      getTotalPoints: function() {
+        var points = 0;
+        for (var i=0; i < this.students.length; i++) {
+          points += this.students[i].points;
+        }
+        return points;
+      }
+    };
+
+    // PART 2
+    // Build out Hogwarts!
+    // ------------------------------------
+    //
+    var Hogwarts = {
+      houses: [],
+
+      // 2) Add a new House object to the "houses" array:
+      // All houses should be built from a common prototype.
+      //
+      // This method would be invoked as:
+      // -> Hogwarts.addHouse("Gryffindor");
+      //
+      addHouse: function(name) {
+        var house = new House(name);
+        this.houses.push(house);
+      },
+
+      // 2.BONUS) Add any number of new House objects at once:
+      // you'll need to loop through arguments and call "addHouse" for each name.
+      //
+      // This method would be invoked as:
+      // -> Hogwarts.addHouses("Gryffindor", "Ravenclaw");
+      //
+      addHouses: function() {
+        for (var i=0; i < arguments.length; i++) {
+          this.addHouse(arguments[i]);
+        }
+      },
+
+      // 3) Gets an existing House object by name from the array of houses:
+      // you'll need to loop through the houses array until you find a matching House.
+      //
+      // This method would be invoked as:
+      // -> Hogwarts.getHouse("Gryffindor");
+      // And should return the Gryffindor House object.
+      //
+      getHouse: function(name) {
+        for (var i=0; i < this.houses.length; i++) {
+          if (this.houses[i].name === name) {
+            return this.houses[i];
+          }
+        }
+      },
+
+      // 4) Gets an existing House object that contains a specific student name:
+      // you'll need to loop through the houses array, asking each House if they have the student.
+      //
+      // This method would be invoked as:
+      // -> Hogwarts.getHouseWithStudent("Harry Potter");
+      // And should return the student's House object.
+      //
+      getHouseWithStudent: function(studentName) {
+        for (var i=0; i < this.houses.length; i++) {
+          if (this.houses[i].getStudent(studentName)) {
+            return this.houses[i];
+          }
+        }
+      },
+
+      // 5) Shortcut for awarding point to any student in the school!
+      // This will need to find the student among all houses, and then award points.
+      // try to do this with *as little* redundant enumeration as possible.
+      //
+      // This method would be invoked as:
+      // -> Hogwarts.awardPointsToStudent("Harry Potter", 50);
+      //
+      awardPointsToStudent: function(studentName, points) {
+        for (var i=0; i < this.houses.length; i++) {
+          var student = this.houses[i].getStudent(studentName);
+          if (student) {
+            student.points += points;
+            // We've found the student and awarded points,
+            // so we can safely return and stop searching...
+            return;
+          }
+        }
+        // NOTE ON THIS IMPLEMENTATION:
+        // Technically, we could do this as:
+        //
+        // var house = this.getHouseWithStudent(studentName);
+        // house.awardPointsTo(studentName, points);
+        //
+        // Why not do it that way?
+        // Well, that would force the House to look up the student twice.
+      },
+
+      // 6) Find the Houses with the most points.
+      // return an array with the leading House, or tied leaders.
+      // this is tricker than it sounds...
+      //
+      // This method would be invoked as:
+      // -> Hogwarts.getLeadingHouse();
+      // And would return:
+      // [{ House }, { House }]
+      //
+      getLeadingHouses: function() {
+        var maxPoints = 0;
+        var leaders = [];
+
+        // Find the maximum points total:
+        for (var i=0; i < this.houses.length; i++) {
+          maxPoints = Math.max(maxPoints, this.houses[i].getTotalPoints());
+        }
+
+        // Select all houses with the maximum points:
+        for (i=0; i < this.houses.length; i++) {
+          if (this.houses[i].getTotalPoints() >= maxPoints) {
+            leaders.push(this.houses[i]);
+          }
+        }
+
+        return leaders;
+
+        // NOTE ON THIS IMPLEMENTATION:
+        // The astute observer will notice that tallying house points is EXPENSIVE,
+        // therefore it's not ideal to be calculating each House's points twice.
+        //
+        // A common optimization here would be to add an extra data structure
+        // that stores computed house points for the second loop...
+        //
+        // Welcome to computer science.
+      }
+    };
+    </script>
+  </body>
+</html>
