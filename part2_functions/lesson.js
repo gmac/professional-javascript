@@ -259,3 +259,81 @@ function PodRacer() {
 }
 
 var pod = new PodRacer(); // this -> brand new object
+
+
+
+// ------------------------------
+// PART 4: Prototypal Inheritance
+// ------------------------------
+
+// Shared properties:
+
+function Car() {
+  // configure new instance...
+}
+
+Car.prototype = {
+  wheels: 4,
+  doors: 2,
+  honk: function() {
+    console.log('beep beep');
+  }
+};
+
+var car1 = new Car();
+var car2 = new Car();
+
+car1.honk(); // beep beep
+car2.honk(); // beep beep
+
+car1.honk === car2.honk; // <- true
+
+
+// Customization:
+
+function Player(firstName, lastName) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+}
+
+Player.prototype = {
+  score: 0,
+  fullName: function() {
+    return this.firstName +' '+ this.lastName;
+  }
+};
+
+var player1 = new Player('Micky', 'Mouse');
+var player2 = new Player('Donald', 'Duck');
+
+player1.fullName(); // Micky Mouse
+player2.fullName(); // Donald Duck
+
+
+// Trait assignment:
+
+player1.score += 100;
+console.log(player1.score); // 100
+console.log(player2.score); // 0
+
+
+
+// Shared data:
+
+function House() {
+  // configure new object...
+}
+
+House.prototype = {
+  students: [],
+  addStudent: function(name) {
+    this.students.push(name);
+  }
+};
+
+var gryff = new House();
+var huff = new House();
+
+
+gryff.addStudent('Harry');
+huff.addStudent('Cedric');
