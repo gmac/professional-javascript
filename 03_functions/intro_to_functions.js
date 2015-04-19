@@ -105,12 +105,12 @@ var car = {
 
 // 3) Functions may be passed as arguments to other functions:
 
-function timer(secs, callback) {
+function setTimer(secs, callback) {
   // Wait for [secs] seconds, then...
   callback();
 }
 
-timer(1, function() {
+setTimer(1, function() {
   console.log('Timer Complete!');
 });
 
@@ -136,7 +136,7 @@ function meta() {
 
 (function() {
 
-  console.log('I ran within my own private scope!');
+  console.log('I run within my own private scope!');
 
 })();
 
@@ -260,8 +260,6 @@ function PodRacer() {
 
 var pod = new PodRacer(); // this -> brand new object
 
-
-
 // ------------------------------
 // PART 4: Prototypal Inheritance
 // ------------------------------
@@ -337,3 +335,6 @@ var huff = new House();
 
 gryff.addStudent('Harry');
 huff.addStudent('Cedric');
+
+// ... uh, oh. Something is wrong here.
+// Gryff and Huff each have two students?!
