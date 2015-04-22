@@ -155,7 +155,7 @@ In the above example, arithmetic could not be performed on number and string dat
 An oddity of the number data type is the special value `NaN`, which represents "Not a Number". You'll commonly get `NaN` after trying to perform impossible arithmetic operations:
 
 ```javascript
-23 / 0 // NaN
+23 * undefined // NaN
 ```
 
 You can check the outcome of math operations for `NaN` using JavaScript's `isNaN()` function. Likewise, this same pattern applies for the less common `Infinity` number value, which can be recognized using the `isFinite()` function.
