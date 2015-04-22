@@ -480,10 +480,11 @@ Computer programs make decisions about data in terms that they understand: 1 or 
 
 Thankfully, we don't need to memorize the truthiness of all possible data values! Programming languages have deliberately few "falsey" values, so if we know those, we know that everything else is "truthy".
 
-**JavaScript has FIVE values that asses as falsey:**
+**JavaScript has SIX values that asses as falsey:**
 
  - `false` (Boolean)
  - `0` (Number)
+ - `NaN` (Number)
  - `""` (String with zero characters)
  - `null`
  - `undefined`
