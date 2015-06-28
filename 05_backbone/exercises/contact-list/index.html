@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact List</title>
+  <style>
+  body {
+    font: 200 16px/1.5 "Helvetica Neue", Helvetica, sans-serif;
+    margin: 30px;
+  }
+  #add-contact {
+    background-color: whitesmoke;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 15px;
+    padding: 10px;
+  }
+  #add-contact label {
+    margin-right: 10px;
+  }
+  #list-contacts {
+    width: 100%;
+  }
+  #list-contacts thead td {
+    border-bottom: 2px solid black;
+    width: 33%;
+  }
+  </style>
+</head>
+<body>
+
+  <form id="add-contact">
+    <label>Name <input type="text" name="name"></label>
+    <label>Email <input type="text" name="email"></label>
+    <button>Add Contact</button>
+  </form>
+
+  <table id="list-contacts">
+    <thead>
+      <td>Name</td>
+      <td>Email</td>
+      <td>Remove</td>
+    </thead>
+    <tbody></tbody>
+  </table>
+  
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/vendor/underscore.js"></script>
+  <script src="js/vendor/backbone.js"></script>
+  <script src="js/vendor/backbone.localstorage.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
