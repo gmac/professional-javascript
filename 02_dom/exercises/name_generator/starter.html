@@ -32,17 +32,6 @@
 
     // ... make "name-bttn" clicks generate a new random name combo ...
 
-    var bttn = document.querySelector('#name-bttn');
-
-    bttn.addEventListener('click', function() {
-      var firstNameIndex = Math.round(Math.random() * (firstNames.length - 1));
-      var first = firstNames[firstNameIndex];
-
-      var lastNameIndex = Math.round(Math.random() * (lastNames.length - 1));
-      var last = lastNames[lastNameIndex];
-      document.querySelector('#name-text').innerText = first +' '+ last;
-    });
-
     </script>
   </body>
 </html>

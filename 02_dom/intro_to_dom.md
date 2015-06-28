@@ -40,10 +40,16 @@ The DOM is composed of individual **elements**. If we want to manipulate an elem
  </script>
 ```
 
-**Common element selector methods include:**
+**Modern element selector methods include:**
 
  - `document.querySelector("#css-selector")` : Gets ONE element.
  - `document.querySelectorAll(".css-selector")` : Gets ALL matching elements.
+ 
+**Older selector methods include:**
+
+ - `document.getElementById('id-name')`: Gets ONE element.
+ - `document.getElementsByClassName('class-name')`: Gets ALL matching class elements.
+ - `document.getElementsByTagName('tagname')`: Gets ALL matching tag elements.
  
 ## Exchanging Data
 
@@ -63,6 +69,7 @@ Once we've selected the DOM elements that we're interested in, we can get and/or
 
 **Common element data methods include:**
 
+ - `className`: gets/sets the class name of an element.
  - `innerText`: gets/sets the plain text content of an element.
  - `innerHTML`: gets/sets the HTML markup within an element.
  - `value`: gets/sets the value of `<input>` field elements.
@@ -93,6 +100,7 @@ To monitor user input, we select an element that we're interested in and then us
 **Commonly tracked event names:**
 
  - `"click"`: triggered when elements are clicked.
+ - `"focus"`: triggered when an element receives browser focus.
  - `"input"`: triggered when an input form element recieves input.
  - `"change"`: triggered when an input element changes value.
  - `"submit"`: triggered by a form element upon submission.
@@ -116,7 +124,7 @@ When we bind an event handler, that function may declare an argument (usually ca
  </script>
 ```
 
-The Event Object contains useful data detailing the state of the browser at the time the event occured, including the coordinates of the cursor, the keystroke code, other control keys pressed, etc. The event object also allows us to cancel the browser's default behavior for an event using the `preventDefault` method:
+The Event Object contains all kinds of useful data detailing the state of the browser at the time the event occured, including the coordinates of the cursor, the keystroke code, other control keys pressed, etc. The event object also allows us to cancel the browser's default behavior for an event by invoking the `preventDefault` method:
 
 ```html
 <a href="/home" id="home-link">Home</a>
@@ -133,3 +141,22 @@ The Event Object contains useful data detailing the state of the browser at the 
 ```
 
 See [event documentation](https://developer.mozilla.org/en-US/docs/Web/API/Event) for a complete summary of event data and methods.
+
+### Event Propagation (Bubbling)
+
+Consider the following DOM structure:
+
+```html
+ <html>
+  <body>
+    <section>
+      <h1>Fun With Propagation</h1>
+      <p>Let's <button>bubble</button>.</p>
+    </section>
+  </body>
+ </html>
+```
+
+Let's say that a user clicks on the "bubble" button. The click event will trigger on the clicked `button` element; however it won't stop there... that `button` is part of a `p` element, so the parent `p` has also been clicked; and that `p` is part of a `section` element, so the parent `section` has also been clicked; and so on in goes.
+
+In this way, event notifications originate on the elements where the event has actually occured, and then *bubble* up through the DOM to each higher parent node in sequence. This allows us to capture events at any level within the DOM. For example, listening for clicks on the `document` responds to a click anywhere on the page.
