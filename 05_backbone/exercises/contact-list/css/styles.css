@@ -1,0 +1,26 @@
+body {
+  font: 200 16px/1.5 "Helvetica Neue", Helvetica, sans-serif;
+  margin: 30px;
+}
+
+#add-contact {
+  background-color: whitesmoke;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-bottom: 15px;
+  padding: 10px;
+}
+
+#add-contact label {
+  margin-right: 10px;
+}
+
+#list-contacts {
+  width: 100%;
+}
+
+#list-contacts thead td {
+  border-bottom: 2px solid black;
+  width: 33%;
+}

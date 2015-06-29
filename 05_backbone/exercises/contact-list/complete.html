@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact List</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <form id="add-contact">
+    <label>Name <input type="text" name="name"></label>
+    <label>Email <input type="text" name="email"></label>
+    <button>Add Contact</button>
+  </form>
+
+  <table id="list-contacts">
+    <thead>
+      <td>Name</td>
+      <td>Email</td>
+      <td>Remove</td>
+    </thead>
+    <tbody></tbody>
+  </table>
+  
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/vendor/underscore.js"></script>
+  <script src="js/vendor/backbone.js"></script>
+  <script src="js/vendor/backbone.localstorage.js"></script>
+  <script src="js/app-complete.js"></script>
+</body>
+</html>

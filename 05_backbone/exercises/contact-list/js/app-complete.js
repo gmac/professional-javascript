@@ -16,7 +16,8 @@ var ContactList = Backbone.Collection.extend({
   model: ContactModel,
   
   // Configure the model to persist data in localStorage:
-  localStorage: new Backbone.LocalStorage('contacts')
+  // (we're providing a hash string to use as the namespace for our application data)
+  localStorage: new Backbone.LocalStorage('4136a932eb7724a00cb87c3fb9e1ea1d')
 });
 
 /**

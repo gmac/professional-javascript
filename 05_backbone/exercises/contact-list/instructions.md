@@ -2,7 +2,7 @@
 
 First, we need a model that will manage data for each individual contact. Put this at the top of your `app.js` JavaScript file:
 
-```
+```javascript
 // Model for managing a single contact:
 
 var ContactModel = Backbone.Model.extend({
@@ -21,7 +21,7 @@ While we're not working with a formal database in this exercise, keep in mind th
 
 Models store data about our individual contacts. However, we need to manage a _list_ of contacts. A Collection is a data structure designed to manage a list of models. Add this into `app.js` below your model class:
 
-```
+```javascript
 // Collection for managing a list of contact models:
 
 var ContactList = Backbone.Collection.extend({
@@ -44,7 +44,7 @@ We're doing two things here:
 
 Next, we'll setup a View class that manages the `#add-contacts` form. Whenever this form is submitted, we want to collect data from the form and use it to create a new contact in the collection. Add this into `app.js` below your collection class:
 
-```
+```javascript
 // View for managing the #add-contact form submissions:
 
 var AddContactView = Backbone.View.extend({
@@ -88,7 +88,7 @@ If you were to refresh the contacts list page at the moment, you'll see that for
 
 Add the following to the bottom of your `app.js` file:
 
-```
+```javascript
 /**
 * Instantiate Components:
 */
@@ -142,7 +142,7 @@ Yeah, this is REALLY good. While we've placed absolutely nothing on the screen, 
 
 Yeah, yeah... so you want to see pretty data show up on screen rather than just inspecting your collection through the command line? Well, then let's create another view that handles the translation of models stored in the collection into graphics on the screen. Add this into `app.js` just _above_ the `/* Instantiate Components */` section:
 
-```
+```javascript
 // View for displaying the list of contacts:
 
 var ListContactsView = Backbone.View.extend({
@@ -177,4 +177,26 @@ var ListContactsView = Backbone.View.extend({
 
 This view is not very intelligent. What it's doing is simply listening to our contacts collection for `sync` and `remove` events, which indicate that contacts have been added or removed from the collection. When either of these events occur, the view calls its `render` method, which builds an HTML representation of the current contacts data, and displays that HTML on the screen.
 
-This is a fundamentally simple pattern... rather than a complex algorithm to manage data and display together (and attempt to keep them synchronized), we've split the concerns apart: our collection manages a list of models. When any of these models change, the view simply re-renders with their revised state.
+This is a fundamentally simple pattern... rather than a complex algorithm to manage data and display together (and attempt to keep them synchronized), we've split these concerns apart: our collection manages a list of models. When any of these models change, the view simply re-renders with their revised state.
+
+**DID WE DO IT RIGHT?**
+
+The signature of a well-designed application is that you can fully control it from the command line. Let's try it... open the JavaScript console and run this command:
+
+```
+contacts.create({name: 'Fluffy Kitty', email: 'kitty@cat.com'})
+```
+
+If your application is hooked up right, you should see your new contact appear within the app, even when you add the contact through the command line!
+
+# 6. Reload data on page refresh
+
+Problem: when I reload the page, I don't get my data back! Now, we've already looked within local storage and validated that our data is getting saved, so what's the deal?
+
+The problem is simple: when we refresh the page, we're seeing a fresh and empty instance of the `ContactsList` collection. We just need to tell it to restore our saved data from the local storage cache. Add this as the last line of your `app.js` file:
+
+```javascript
+contacts.fetch();
+```
+
+Reload the page and... bam. Our collection fetches data from local storage to restore our previous app state.
