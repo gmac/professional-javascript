@@ -24,7 +24,7 @@ var userName = prompt('What is your name?');
 ```
 - Print out `"Hello, [user name]!"`
 - If the user's favorite food is "Tandoori Chicken" and they travel, tell them they should go to India.
-- If the user's favorite food is "Burrito" and they travel, tell them they should go to Mexico.
+- If the user's favorite food is "Burritos" and they travel, tell them they should go to Mexico.
 - If the user doesn't travel, tell them they should seek out bad American `[favorite food]`.
 ```
 

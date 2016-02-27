@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>World Foodie</title>
+    <style>body { font: 16px/1.5 'Helvetica Neue', Helvetica, Arial, sans-serif; text-align: center; }</style>
+  </head>
+  <body>
+    <h1>World Foodie</h1>
+    <p>(use the javascript console)</p>
+    <script>
+      
+      var userName = prompt('What is your name?');
+      var favoriteFood = prompt('What is your favorite food?').toLowerCase();
+      var traveler = prompt('Do you like to travel?').toLowerCase();
+
+      console.log('Hello '+ userName +'!');
+
+      if (favoriteFood === 'tandoori chicken' && traveler === 'yes') {
+        console.log('You should go to India to eat '+ favoriteFood +'.');
+      }
+      else if (favoriteFood === 'burritos' && traveler === 'yes') {
+        console.log('You should go to Mexico to eat '+ favoriteFood +'.');
+      }
+      else {
+        console.log('Sorry, you have to eat bad American '+ favoriteFood +'.');
+      }
+
+    </script>
+  </body>
+</html>
