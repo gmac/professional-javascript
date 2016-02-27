@@ -271,6 +271,146 @@ b.length; // 1 <-- B has one item.
 
 The above demonstrates how multiple variables will reference the same underlying array instance. Modifications to the underlying datum are visible through all variable aliases. While composite data structures *can* be duplicated into unique variables, JavaScript requires you to intentionally do so.
 
+## Conditionals
+
+Conditional statements provide a simple logic construct for expressing: "if this, then do that":
+
+```javascript
+if (condition) {
+  // Do something in this block...
+}
+```
+
+A conditional statement is comprised of two parts:
+
+ - The **condition** is a code *expression* that gets assessed as a boolean (true/false). This condition generally compares two data values (ex: `a < b`).
+ 
+ - The condition is followed by a **block**, which is a list of commands wrapped in curly braces. If the condition evaluates as truthy, then the block runs. Otherwise, the block is skipped.
+
+Conditional statements may be extended with multiple clauses using `else if`, and may include a final catchall `else` block to run when other conditions fail:
+
+```javascript
+if (a > b) {
+  // A is greater...
+  
+} else if (a < b) {
+  // A is less...
+  
+} else {
+  // When all else fails...
+}
+```
+
+When structuring multi-clause conditionals, just remember that ONLY ONE block will ever be allowed to run during program execution.
+
+### Data Truthiness
+
+Computer programs make decisions about data in terms that they understand: 1 or 0 (true or false). To facilitate this, all data values have an inherent "truthiness", or a boolean assessed from their value.
+
+Thankfully, we don't need to memorize the truthiness of all possible data values! Programming languages have deliberately few "falsey" values, so if we know those, we know that everything else is "truthy".
+
+**JavaScript has SIX values that asses as falsey:**
+
+ - `false` (Boolean)
+ - `0` (Number)
+ - `NaN` (Number)
+ - `""` (String with zero characters)
+ - `null`
+ - `undefined`
+
+We'll frequently place single data values into conditionals, and allow the value's truthiness to fulfill the condition:
+
+```javascript
+var lunchOrderCount = 0;
+
+if (lunchOrderCount) {
+  // This does NOT run, because there are no students (`0` is falsey).  
+}
+
+lunchOrderCount += 1;
+
+if (lunchOrderCount) {
+  // This runs, because now there is a student (`1` is truthy).
+}
+```
+
+### Data Comparisons
+
+To assess two values in relation to one another, we perform comparisons:
+
+```
+a === b   Equality. Does A equal B?
+a !== b   Inequality. Does A NOT equal B?
+
+a < b     Less than. Is A less than B?
+a <= b    Less than or Equal. Is A less than OR equal to B?
+
+a > b     Greater than. Is A greater than B?
+a >= b    Greater than or Equal. Is A greater than OR equal to B?
+```
+
+Comparison operations also yield booleans (true or false). We'll frequently perform comparisons directly inside of conditional statements:
+
+```javascript
+var age = 18;
+
+if (age >= 16) {
+  console.log("You are eligible for a driver's license.");
+}
+
+if (age < 21) {
+  console.log("Sorry, you cannot drink alcohol.");
+}
+```
+
+### Logical Operators
+
+Sometimes we need to reverse our assessment of data, or assess multiple conditions. The NOT, AND, and OR operators are used here.
+
+**NOT**
+
+The `!` ("Bang") operator negates the truthiness of the proceeding expression:
+
+```javascript
+var lunchOrderCount = 0;
+
+if (!lunchOrderCount) {
+  // If we have no lunch orders...
+  // This block RUNS because:
+  // - The number of lunch orders is 0 (falsey), negated to be truthy.
+}
+```
+
+**AND**
+
+The `&&` ("And") operator combines multiple assessments. Assessments may be wrapped in parenthesis to group them. The `&&` operator requires that all assessments be truthy for the full expression to be truthy:
+
+```javascript
+var lunchOrderCount = 1;
+
+if (lunchOrderCount && lunchOrderCount < 10) {
+  // If we have lunch orders, AND the quantity is less than ten...
+  // This block RUNS because:
+  // - Order count is 1 (truthy), AND...
+  // - Order count is less than 10 (truthy)
+}
+```
+
+**OR**
+
+The `||` ("Or") operator checks multiple assessments, and requires that at least one assessment be truthy for the full expression to be truthy.
+
+```javascript
+var lunchOrderCount = 0;
+
+if (!lunchOrderCount || lunchOrderCount > 10) {
+  // If we have no lunch orders, OR we have more than 10 lunch orders...
+  // This block RUNS because:
+  // - (!lunchOrderCount) is truthy, OR...
+  // - (lunchOrderCount > 10) is falsey
+}
+```
+
 ## Arrays
 
 Arrays manage a set of data references, indexed with sequential numbers. Any type of data may be added to an array, and any number of values may be added.
@@ -441,146 +581,6 @@ This `for...in` loop has two parts: an iterator, and an object.
  - The **object** specifies what data structure to loop through the keys of.
 
 Now, this simpler `for...in` loop technically works on arrays as well, however it cannot guarantee the order in which keys are accessed. For named object keys, we're generally not concerned with order. For ordered arrays though, it's generally safest to use a sequential `for` loop.
-
-## Conditionals
-
-Conditional statements provide a simple logic construct for expressing: "if this, then do that":
-
-```javascript
-if (condition) {
-  // Do something in this block...
-}
-```
-
-A conditional statement is comprised of two parts:
-
- - The **condition** is a code *expression* that gets assessed as a boolean (true/false). This condition generally compares two data values (ex: `a < b`).
- 
- - The condition is followed by a **block**, which is a list of commands wrapped in curly braces. If the condition evaluates as truthy, then the block runs. Otherwise, the block is skipped.
-
-Conditional statements may be extended with multiple clauses using `else if`, and may include a final catchall `else` block to run when other conditions fail:
-
-```javascript
-if (a > b) {
-  // A is greater...
-  
-} else if (a < b) {
-  // A is less...
-  
-} else {
-  // When all else fails...
-}
-```
-
-When structuring multi-clause conditionals, just remember that ONLY ONE block will ever be allowed to run during program execution.
-
-### Data Truthiness
-
-Computer programs make decisions about data in terms that they understand: 1 or 0 (true or false). To facilitate this, all data values have an inherent "truthiness", or a boolean assessed from their value.
-
-Thankfully, we don't need to memorize the truthiness of all possible data values! Programming languages have deliberately few "falsey" values, so if we know those, we know that everything else is "truthy".
-
-**JavaScript has SIX values that asses as falsey:**
-
- - `false` (Boolean)
- - `0` (Number)
- - `NaN` (Number)
- - `""` (String with zero characters)
- - `null`
- - `undefined`
-
-We'll frequently place single data values into conditionals, and allow the value's truthiness to fulfill the condition:
-
-```javascript
-var orders = [];
-
-if (orders.length) {
-  // This does NOT run, because orders has 0 length (falsey).  
-}
-
-orders.push('Cheese Toast');
-
-if (orders.length) {
-  // This runs, because orders has a length of 1 (truthy).
-}
-```
-
-### Data Comparisons
-
-To assess two values in relation to one another, we perform comparisons:
-
-```
-a === b   Equality. Does A equal B?
-a !== b   Inequality. Does A NOT equal B?
-
-a < b     Less than. Is A less than B?
-a <= b    Less than or Equal. Is A less than OR equal to B?
-
-a > b     Greater than. Is A greater than B?
-a >= b    Greater than or Equal. Is A greater than OR equal to B?
-```
-
-Comparison operations also yield booleans (true or false). We'll frequently perform comparisons directly inside of conditional statements:
-
-```javascript
-var age = 18;
-
-if (age >= 16) {
-  console.log("You are eligible for a driver's license.");
-}
-
-if (age < 21) {
-  console.log("Sorry, you cannot drink alcohol.");
-}
-```
-
-### Logical Operators
-
-Sometimes we need to reverse our assessment of data, or assess multiple conditions. The NOT, AND, and OR operators are used here.
-
-**NOT**
-
-The `!` ("Bang") operator negates the truthiness of the proceeding expression:
-
-```javascript
-var orders = [];
-
-if (!orders.length) {
-  // If we have no orders...
-  // This block RUNS because:
-  // - Orders length is 0 (falsey), negated to be truthy.
-}
-```
-
-**AND**
-
-The `&&` ("And") operator combines multiple assessments. Assessments may be wrapped in parenthesis to group them. The `&&` operator requires that all assessments be truthy for the full expression to be truthy:
-
-```javascript
-var orders = ['Banana Sandwich'];
-
-if (orders.length && (orders.length < 10)) {
-  // If we have orders, AND the quantity is less than ten...
-  // This block RUNS because:
-  // - Orders length is 1 (truthy), AND...
-  // - Orders length is less than 10 (truthy)
-}
-```
-
-**OR**
-
-The `||` ("Or") operator checks multiple assessments, and requires that at least one assessment be truthy for the full expression to be truthy.
-
-```javascript
-var orders = [];
-
-if (!orders.length || (orders.length > 10) {
-  // If we have no orders, OR we have more than 10 orders...
-  // This block RUNS because:
-  // - (!orders.length) is truthy, OR...
-  // - (orders.length > 10) is falsey
-}
-```
 
 ## Functions (For Dummies)
 
