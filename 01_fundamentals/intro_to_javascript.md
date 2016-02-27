@@ -324,13 +324,13 @@ We'll frequently place single data values into conditionals, and allow the value
 var lunchOrderCount = 0;
 
 if (lunchOrderCount) {
-  // This does NOT run, because there are no students (`0` is falsey).  
+  // This does NOT run, because there are no students (0 is falsey).  
 }
 
 lunchOrderCount += 1;
 
 if (lunchOrderCount) {
-  // This runs, because now there is a student (`1` is truthy).
+  // This runs, because now there is a student (1 is truthy).
 }
 ```
 
