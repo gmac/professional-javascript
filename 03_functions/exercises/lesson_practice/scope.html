@@ -15,40 +15,46 @@
 
   function washington() {
     console.log("Entering Washington");
-    var mayor = "Greg";
-    //var population = 500;
+    var candidate = "Clinton";
+    var votes = 500;
     president = "Obama";
     
     function navyYard() {
       console.log("Entering Navy Yard");
-      //console.log(population);
-      console.log(mayor);
+      console.log(votes);
+      console.log(candidate);
 
-      // var mayor = "Peter";
-      population = 100;
+      var candidate = "Sanders";
+      votes = 100;
 
-      console.log(population);
+      console.log(votes);
+      console.log(candidate);
       console.log("Leaving Navy Yard");
     }
 
     function easternMarket() {
       console.log("Entering Eastern Market");
+      console.log(votes);
+      console.log(candidate);
+      
+      var candidate = "Trump";
+      var votes = 300;
 
-      var population = 300;
-      var mayor = "Travis";
-
+      console.log(votes);
+      console.log(candidate);
       console.log("Leaving Eastern Market");
     }
 
     navyYard();
-    // easternMarket();
+    easternMarket();
 
-    console.log(mayor);
-    console.log(population);
+    console.log(votes);
+    console.log(candidate);
     console.log("Leaving Washington");
   }
 
   washington(); 
+  console.log(president);
 
   </script>
 </body>

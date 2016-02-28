@@ -25,12 +25,12 @@
   console.log('2');
   sayColor();
 
-  var apple = {color: 'red'};
+  var apple = {name: 'apple', color: 'red'};
 
   console.log('3');
   sayColor.call(apple);
 
-  var banana = {color: 'yellow'};
+  var banana = {name: 'banana', color: 'yellow'};
   banana.sayMyColor = sayColor;
 
   console.log('4');
