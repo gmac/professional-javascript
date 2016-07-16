@@ -61,15 +61,22 @@ Regular Expressions allow for an unprecidented level of text recognition and man
 
 Overall, Regex are a powerful tool for any programmer's utility belt.
 
-# Basic Matches
+## Basic Matchers
 
+A basic RegEx is formatted as a text pattern wrapped in `/` _delimiters_:
+
+```javascript
 /hello/
+```
 
-"`hello` world"
+That `/` delimiter identifies the boundaries of the RegEx, which makes it a _reserved character_. RegEx reserves the following characters: `$ * + . ( ) [ ] { } | /`. To include a reserved character within a text pattern, it must be escaped using a `\` (forward slash).
 
-Friday is fry day at McDonald's today.
+```javascript
+// "Costs $100/person" escapes as:
+/Costs \$100\/person/
+```
 
-## Character Sets
+### Character Sets
 
 * `.`  Any single character
 * `\s` Any whitespace character
@@ -80,7 +87,7 @@ Friday is fry day at McDonald's today.
 * `\W` Any non-word character
 * `\b` Any word boundary
 
-## Anchors
+### Anchors
 
 * `^` Start of line
 * `$` End of line
