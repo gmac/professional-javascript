@@ -29,12 +29,6 @@ Regular Expressions (Regex) are considerably more sophisticated because they sea
 I will [meet] you on Tuesday during the meeting at Joe's [Meat]s.
 ```
 
-## Why are Regular Expressions awesome?
-
-Regular Expressions allow for an unprecidented level of text analysis and manipulation that would be extremely difficult and/or laborious to achieve with literal sequences alone. Regex are particularily useful in the realm of computer science, where programs frequently need to recognize and reformat text for various purposes. Complex string manipulations (such as reformatting HTML markup) can be extremely difficult or highly inacurate without the robust matching capabilities provided by Regex.
-
-Overall, Regex are a powerful tool for any programmer's utility belt.
-
 ## Why are Regular Expressions terrifying?
 
 Today's complex Regular Expressions were introduced during the 1980's as part of the Perl language, and are notorious still today for their daunting illegibility. Take a phone number, for example:
@@ -50,6 +44,23 @@ Today's complex Regular Expressions were introduced during the 1980's as part of
 - 555-555-5555
 - 555.555.5555
 - 5555555555
+
+## Why are Regular Expressions awesome?
+
+Regular Expressions allow for an unprecidented level of text recognition and manipulation that would be extremely difficult and/or virtually impossible to achieve with literal sequences alone. Regex are particularily useful in the realm of computer science, where programs frequently need to recognize and reformat text for various purposes.
+
+```javascript
+/<p\s.*class="yes"[^>]*>(.*?)</p>/g
+```
+
+```html
+<div id="widget">
+  <p class="yes">[Get this text!]</p>
+  <p class="no">Not this text!</p>
+</div>
+```
+
+Overall, Regex are a powerful tool for any programmer's utility belt.
 
 # Basic Matches
 
