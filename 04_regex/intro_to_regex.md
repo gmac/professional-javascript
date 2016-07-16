@@ -87,14 +87,47 @@ Take a few down, pass them around... 1 bottle of beer on the wall.
 A basic RegEx is formatted as a text pattern wrapped in `/` _delimiters_:
 
 ```javascript
-/hello/
+/bottle/
 ```
 
-That `/` delimiter identifies the boundaries of the RegEx, which makes it a _reserved character_. RegEx reserves the following characters: `$ * + . ( ) [ ] { } | /`. To include a reserved character within a text pattern, it must be escaped using a `\` (forward slash).
+### Search Flags
+
+A RegEx may include one or more _search flags_ at the end to govern how the pattern is searched.
 
 ```javascript
-// "Costs $100/person" escapes as:
-/Costs \$100\/person/
+// Find all occurances (globally) of the word "bottle":
+/bottle/g
+```
+
+* `g` Global search (matches all occurances of the pattern).
+* `i` Case-Insensitive (matches upper and lowercase letters with indifference).
+* `m` Multiline (matches the pattern across line breaks in the text).
+
+### Alternation
+
+A RegEx may match against multiple pattern alternatives:
+
+```javascript
+// Find all occurances of the words "bottle", "battle", and "beer"
+/bottle|battle|beer/g
+```
+
+* `a|b` matches "a" OR "b".
+
+### Reserved characters
+
+Any character that RegEx uses as an operator is a _reserved character_. The following characters are reserved for use by RegEx:
+
+```
+$ * + . ( ) [ ] { } | /
+```
+
+To include a reserved character within a text pattern, it must be escaped using a `\` (forward slash).
+
+```javascript
+// "Costs $100 (USD)"
+// escaped for RegEx:
+/Costs \$100 \(USD\)/
 ```
 
 ### Character Sets
