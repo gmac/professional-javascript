@@ -18,7 +18,7 @@ Regular Expressions provide text searching and replacement capabilities, similar
 I will [meet] you on Tuesday during the [meet]ing at Joe's Meats.
 ```
 
-Regular Expressions (Regex) are considerably more sophisticated because they search for customizable _patterns_ in text. Patterns allow us to find text with greater contextual awareness:
+Regular Expressions (RegEx) are considerably more powerful because they search for _patterns_ in text, which allows for contextual awareness:
 
 **Pattern string match:**
 - Find `"meet"` as a standalone word (surrounded by spaces and/or periods).
