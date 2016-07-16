@@ -39,7 +39,9 @@ Overall, Regex are a powerful tool for any programmer's utility belt.
 
 Regular Expressions are notorious for their daunting illegibility; for example, here's how you might match a phone number:
 
-`/(?:\d{1,3}[\.-]?)?\d{3}[\.-]?\d{3}[\.-]?\d{4}/g`
+```javascript
+/(?:\d{1,3}[\.-]?)?\d{3}[\.-]?\d{3}[\.-]?\d{4}/g
+```
 
 **Matches all of the following phone number patterns:**
 - 123-555-555-5555
