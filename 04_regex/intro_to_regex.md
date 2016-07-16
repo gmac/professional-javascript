@@ -121,21 +121,37 @@ Custom classes allow you to build your own character sets.
 
 ### Anchors
 
-Anchors allow a search pattern to be locked at the start or end of a line. Extremely useful!
+These flags anchor a search pattern to the start or end of a line. Extremely useful!
 
-* `^` Start of line (ex: `/^hello/` matches "hello world" but not "say hello")
-* `$` End of line (ex: `/hello$/` matches "say hello" but not "hello world")
+* `^` Start of line (ex: `/^hello/` matches "hello world" but not "say hello").
+* `$` End of line (ex: `/hello$/` matches "say hello" but not "hello world").
 
 ### Repetitions
 
-* `?` Match zero or one characters (ie: optional).
-* `*` Match zero or more characters.
-* `+` Match one or more characters.
+These flags cause a pattern to be matched repeatedly, which can turn a single character match into many.
+
+* `?` Match preceding pattern zero or one times (ex: `/cars?/` will match `"car"` or `"cars"`).
+* `*` Match preceding pattern zero or more times (ex: `/sou*p/` will match `"soup"` or `"sop"`).
+* `+` Match preceding pattern one or more times. (ex: `/zoo+m/` will match `"zoom"` or `"zoooooooom"`).
+
+One of the most common repitions you'll see in RegEx is `.*`. This is the universal matcher: it will match any character zero or more times... it will match _anything_! This is great for things like HTML tags:
+
+```javascript
+/<p>.*<\/p>/
+```
+
+HOWEVER!! Here's where we need to be careful. Repitions are _greedy_ by default, meaning they will match as *many* characters as possible. Consider the following text:
+
+```html
+<p>Goodbye F&R</p><p>Hello RegEx!</p>
+```
+
+Our RegEx is greedy, so will attempt to match _as many characters as possible_ before matching the closing tag pattern. While we only want to capture `<p>Goodbye F&R</p>`, we will get both tags -- matched by the opening of the first tag and the closing of second tag. Not what we wanted!
 
 ### Lazy Repition
 
-* `*?` Match zero or more, as few times as possible.
-* `+?` Match one or more, as few times as possible.
+* `*?` Match zero or more of the preceding pattern, as few times as possible.
+* `+?` Match one or more of the preceding pattern, as few times as possible.
 
 Alternative to laziness:
 
