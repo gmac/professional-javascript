@@ -108,17 +108,21 @@ That `/` delimiter identifies the boundaries of the RegEx, which makes it a _res
 * `\W` Any non-word character
 * `\b` Any word boundary
 
+### Classes
+
+Custom classes allow you to build your own character sets.
+
+* `[abc]` Positive character class (matches "a", "b", or "c").
+* `[^abc]` Negative character class (matches anything _except_ "a", "b", or "c").
+* `[a-z]` Character range
+* `[a-zA-Z]` Double range (uppercase and lowercase)
+
 ### Anchors
+
+Anchors allow a search pattern to be locked at the start or end of a line. For example, `/^hello/` will only find instances of the word "hello" at the start of a line, or `/goodbye$/` will require the word to fall at the end of a line.
 
 * `^` Start of line
 * `$` End of line
-
-### Classes
-
-* `[abc]` Positive character class
-* `[^abc]` Negative character class
-* `[a-z]` Character range
-* `[a-zA-Z]` Double range (uppercase and lowercase)
 
 ### Repetitions (Greedy)
 
