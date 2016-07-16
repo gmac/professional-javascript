@@ -79,9 +79,6 @@ We'll use the following text as out first search corpus:
 The Battle of the Bottles
 
 99 bottles of beer on the wall, 99 bottles of beer.
-Take a few down, pass them around... 9 bottles of beer on the wall.
-
-9 bottles of beer on the wall, 9 bottles of beer.
 Take a few down, pass them around... 1 bottle of beer on the wall.
 ```
 
