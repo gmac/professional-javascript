@@ -84,7 +84,7 @@ Take a few down, pass them around... 1 bottle of beer on the wall.
 
 ## Basic Matchers
 
-A basic RegEx is formatted as a text pattern wrapped in `/` _delimiters_:
+A basic RegEx is formatted as a text pattern wrapped in `/` delimiters:
 
 ```javascript
 /bottle/
@@ -92,7 +92,7 @@ A basic RegEx is formatted as a text pattern wrapped in `/` _delimiters_:
 
 ### Search Flags
 
-A RegEx may include one or more _search flags_ at the end to govern how the pattern is searched.
+A RegEx may include one or more _search flags_ at the end to govern how the pattern is searched:
 
 ```javascript
 // Find all occurances (globally) of the word "bottle":
@@ -105,24 +105,24 @@ A RegEx may include one or more _search flags_ at the end to govern how the patt
 
 ### Alternation
 
-A RegEx may match against multiple pattern alternatives:
+A RegEx may match against two or more alternative patterns:
 
 ```javascript
-// Find all occurances of the words "bottle", "battle", and "beer"
+// Find all occurances of the words "bottle", "battle", and/or "beer"
 /bottle|battle|beer/g
 ```
 
-* `a|b` matches "a" OR "b".
+* `a|b` Match "a" and/or "b".
 
-### Reserved characters
+### Reserved Characters
 
-Any character that RegEx uses as an operator is a _reserved character_. The following characters are reserved for use by RegEx:
+RegEx reserves a set of characters for its own operations. The following characters are reserved by RegEx:
 
 ```
 $ * + . ( ) [ ] { } | /
 ```
 
-To include a reserved character within a text pattern, it must be escaped using a `\` (forward slash).
+If our search pattern includes a reserved character, then it must be escaped using `\` (forward slash):
 
 ```javascript
 // "Costs $100 (USD)"
