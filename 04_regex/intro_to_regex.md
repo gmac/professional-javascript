@@ -9,7 +9,7 @@
 
 ## What are Regular Expressions?
 
-Regular Expressions provide text searching and replacement capabilities, similar to using the "Find & Replace" (F&R) operation in a word processor. However, most common F&R capabilities only support searching for literal sequences...
+Regular Expressions provide text searching and replacement capabilities, similar to using the "Find & Replace" (F&R) operation in a word processor. However, most common F&Rs only search for literal sequences...
 
 **Literal sequence match:**
 - Find `"meet"`.
