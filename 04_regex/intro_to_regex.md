@@ -31,35 +31,35 @@ I will [eat] with you on Tuesday at the eatery called Joe's [Eats].
 
 Regular Expressions allow for an unprecidented level of text recognition and manipulation that would be extremely difficult or virtually impossible to achieve with literal sequence matching alone. Regex are particularily useful in the realm of computer science, where programs frequently need to recognize and reformat specialized text strings.
 
-**Get the header tag content from a raw HTML string:**
-```javascript
-/<h1[^>]*>(.*?)<\/h1>/g
-```
-
+**Get the header tag content:**
 ```html
 <div id="widget">
-  <h1 class="tricky">[Get this headline text!]</h1>
+  <h1 class="tricky">Get this headline text!</h1>
   <p>Not this paragraph</p>
 </div>
+```
+
+RegEx:
+```javascript
+/<h1[^>]*>(.*?)<\/h1>/g
 ```
 
 Overall, Regex are a powerful tool for any programmer's utility belt.
 
 ## Why are Regular Expressions notorious?
 
-Modern regular expressions were introduced with the Perl language during the 1980's, and are notorious still today for their daunting illegibility. Take a phone number, for example:
+Modern regular expressions were introduced with the Perl language during the 1980's, and are notorious still today for their daunting illegibility.
 
-```javascript
-/(?:\d{1,3}[\.-]?)?\d{3}[\.-]?\d{3}[\.-]?\d{4}/g
-```
-
-**Matches all of the following phone number patterns:**
-- 123-555-555-5555
-- 12-555-555-5555
+**Get any of these phone number patterns:**
 - 1-555-555-5555
 - 555-555-5555
 - 555.555.5555
 - 5555555555
+
+RegEx:
+```javascript
+/(?:\d{1,3}[\.-]?)?\d{3}[\.-]?\d{3}[\.-]?\d{4}/g
+```
 
 ## Basic Matchers
 
