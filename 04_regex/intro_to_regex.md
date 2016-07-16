@@ -37,7 +37,7 @@ Overall, Regex are a powerful tool for any programmer's utility belt.
 
 ## Why are Regular Expressions terrifying?
 
-Regular Expressions are notorious for their daunting illegibility; for example, here's how you might match a phone number:
+Today's complex Regular Expressions were introduced during the 1980's as part of the Perl language, and are notorious still today for their daunting illegibility. Take a phone number, for example:
 
 ```javascript
 /(?:\d{1,3}[\.-]?)?\d{3}[\.-]?\d{3}[\.-]?\d{4}/g
