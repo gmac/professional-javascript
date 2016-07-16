@@ -27,6 +27,8 @@ Regular Expressions (RegEx) are considerably more powerful because they search f
 I will [eat] with you on Tuesday at the eatery called Joe's [Eats].
 ```
 
+--
+
 ## Why are Regular Expressions awesome?
 
 Regular Expressions allow for an unprecidented level of text recognition and manipulation that would be extremely difficult or virtually impossible to achieve with literal sequence matching alone. Regex are particularily useful in the realm of computer science, where programs frequently need to recognize and reformat specialized text strings.
@@ -39,12 +41,14 @@ Regular Expressions allow for an unprecidented level of text recognition and man
 </div>
 ```
 
-RegEx:
+**RegEx:**
 ```javascript
 /<h1[^>]*>(.*?)<\/h1>/g
 ```
 
 Overall, Regex are a powerful tool for any programmer's utility belt.
+
+--
 
 ## Why are Regular Expressions notorious?
 
@@ -56,9 +60,29 @@ Modern regular expressions were introduced with the Perl language during the 198
 - 555.555.5555
 - 5555555555
 
-RegEx:
+**RegEx:**
 ```javascript
 /(?:\d{1,3}[\.-]?)?\d{3}[\.-]?\d{3}[\.-]?\d{4}/g
+```
+
+Don't panic... with time and practice, your eyes will train to read regular expressions.
+
+--
+
+## Get Started
+
+Go to [http://www.regexr.com](http://www.regexr.com). This is a very powerful online Regular Expression workbench, perfect for learning, testing, or refining RegEx patterns. Get familiar with these workbench tools. They are your friends!
+
+We'll use the following text as out first search corpus:
+
+```
+The Battle of the Bottles
+
+99 bottles of beer on the wall, 99 bottles of beer.
+Take a few down, pass them around... 9 bottles of beer on the wall.
+
+9 bottles of beer on the wall, 9 bottles of beer.
+Take a few down, pass them around... 1 bottle of beer on the wall.
 ```
 
 ## Basic Matchers
@@ -92,35 +116,33 @@ That `/` delimiter identifies the boundaries of the RegEx, which makes it a _res
 * `^` Start of line
 * `$` End of line
 
-# Classes
+### Classes
 
 * `[abc]` Positive character class
 * `[^abc]` Negative character class
 * `[a-z]` Character range
 * `[a-zA-Z]` Double range (uppercase and lowercase)
 
-# Repetitions
-
-## Basic (Greedy) Repetition
+### Repetitions (Greedy)
 
 * `?` Match zero or one characters (ie: optional).
 * `*` Match zero or more characters.
 * `+` Match one or more characters.
 
-## Lazy Repition
+### Lazy Repition
 
 * `*?` Match zero or more, as few times as possible.
 * `+?` Match one or more, as few times as possible.
 
-## Alternative to laziness
+### Alternative to laziness
 
 * `[^x]+` Greedy match with a negative endpoint.
 
-# Groups
+## Groups
 
 * `()`
 
-# Alternation
+## Alternation
 
 * `x|y`
 * `(x|y)`
