@@ -47,16 +47,17 @@ Today's complex Regular Expressions were introduced during the 1980's as part of
 
 ## Why are Regular Expressions awesome?
 
-Regular Expressions allow for an unprecidented level of text recognition and manipulation that would be extremely difficult and/or virtually impossible to achieve with literal sequences alone. Regex are particularily useful in the realm of computer science, where programs frequently need to recognize and reformat text for various purposes.
+Regular Expressions allow for an unprecidented level of text recognition and manipulation that would be extremely difficult or virtually impossible to achieve with literal sequence matching alone. Regex are particularily useful in the realm of computer science, where programs frequently need to recognize and reformat specialized text strings.
 
+**Get the header tag content from a raw HTML string:**
 ```javascript
-/<p\s.*class="yes"[^>]*>(.*?)</p>/g
+/<h1[^>]*>(.*?)<\/h1>/g
 ```
 
 ```html
 <div id="widget">
-  <p class="yes">[Get this text!]</p>
-  <p class="no">Not this text!</p>
+  <h1 class="tricky">[Get this headline text!]</h1>
+  <p>Not this paragraph</p>
 </div>
 ```
 
