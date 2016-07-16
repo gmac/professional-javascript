@@ -11,20 +11,20 @@
 
 Regular Expressions provide text searching and replacement capabilities, similar to using the "Find & Replace" (F&R) operation in a word processor. However, most common F&Rs only search for literal sequences...
 
-- Find `"meet"`.
+- Find `"eat"`.
 
 ```
-I will [meet] you on Tuesday during the [meet]ing at Joe's Meats.
+I will [eat] with you on Tuesday at the [eat]ery called Joe's Eats.
 ```
 
 Regular Expressions (RegEx) are considerably more powerful because they search for _patterns_ in text, which allows for contextual awareness...
 
-- Find `"meet"` as a standalone word (surrounded by spaces and/or periods).
-- Find all four-letter words that start with `"m"` and end with `"t"` (because, why not?).
-- Allow either lowercase OR uppercase letters in matched words.
+- Find `"eat"` as a standalone word (surrounded by spaces and/or periods).
+- Allow the standalone word to be plural (may end in "s").
+- Allow the standalone word to have both upper and lowercase letters.
 
 ```
-I will [meet] you on Tuesday during the meeting at Joe's [Meat]s.
+I will [eat] with you on Tuesday at the eatery called Joe's [Eats].
 ```
 
 ## Why are Regular Expressions terrifying?
