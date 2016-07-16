@@ -99,14 +99,16 @@ That `/` delimiter identifies the boundaries of the RegEx, which makes it a _res
 
 ### Character Sets
 
-* `.`  Any single character
-* `\s` Any whitespace character
-* `\S` Any non-whitespace character
-* `\d` Any digit
-* `\D` Any non-digit
-* `\w` Any word character (letter, number, underscore)
-* `\W` Any non-word character
-* `\b` Any word boundary
+RegExs provide several built-in character classifications for recognizing common text patterns.
+
+* `.`  Any single character.
+* `\s` Any space character.
+* `\S` Any non-space character.
+* `\d` Any digit.
+* `\D` Any non-digit.
+* `\w` Any word character (matches letters, numbers, and underscore).
+* `\W` Any non-word character (anything BUT letters, numbers, and underscore).
+* `\b` Any word boundary (separators including spaces, commas, and periods).
 
 ### Classes
 
@@ -114,17 +116,17 @@ Custom classes allow you to build your own character sets.
 
 * `[abc]` Positive character class (matches "a", "b", or "c").
 * `[^abc]` Negative character class (matches anything _except_ "a", "b", or "c").
-* `[a-z]` Character range
-* `[a-zA-Z]` Double range (uppercase and lowercase)
+* `[a-z]` Character range (matches any lowercase letter from A to Z).
+* `[a-zA-Z]` Multiple ranges (matches uppercase and lowercase letters from A to Z).
 
 ### Anchors
 
-Anchors allow a search pattern to be locked at the start or end of a line. For example, `/^hello/` will only find instances of the word "hello" at the start of a line, or `/goodbye$/` will require the word to fall at the end of a line.
+Anchors allow a search pattern to be locked at the start or end of a line. Extremely useful!
 
-* `^` Start of line
-* `$` End of line
+* `^` Start of line (ex: `/^hello/` matches "hello world" but not "say hello")
+* `$` End of line (ex: `/hello$/` matches "say hello" but not "hello world")
 
-### Repetitions (Greedy)
+### Repetitions
 
 * `?` Match zero or one characters (ie: optional).
 * `*` Match zero or more characters.
@@ -135,7 +137,7 @@ Anchors allow a search pattern to be locked at the start or end of a line. For e
 * `*?` Match zero or more, as few times as possible.
 * `+?` Match one or more, as few times as possible.
 
-### Alternative to laziness
+Alternative to laziness:
 
 * `[^x]+` Greedy match with a negative endpoint.
 
