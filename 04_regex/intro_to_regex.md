@@ -11,19 +11,17 @@
 
 Regular Expressions provide text searching and replacement capabilities, similar to using the "Find & Replace" (F&R) operation in a word processor. However, most common F&Rs only search for literal sequences...
 
-**Literal sequence match:**
 - Find `"meet"`.
 
 ```
 I will [meet] you on Tuesday during the [meet]ing at Joe's Meats.
 ```
 
-Regular Expressions (RegEx) are considerably more powerful because they search for _patterns_ in text, which allows for contextual awareness:
+Regular Expressions (RegEx) are considerably more powerful because they search for _patterns_ in text, which allows for contextual awareness...
 
-**Pattern string match:**
 - Find `"meet"` as a standalone word (surrounded by spaces and/or periods).
-- Find all four-letter words that start with `"m"` and end with `"t"` (why not).
-- Allow either lowercase OR uppercase in matched words.
+- Find all four-letter words that start with `"m"` and end with `"t"` (because, why not?).
+- Allow either lowercase OR uppercase letters in matched words.
 
 ```
 I will [meet] you on Tuesday during the meeting at Joe's [Meat]s.
