@@ -1,3 +1,24 @@
+# Regular Expressions
+
+## Learning Objectives
+
+- What are Regular Expressions?
+- Why are they incredibly useful?
+- How does RegEx matching work?
+- How does RegEx replacement work?
+
+## What are Regular Expressions?
+
+Regular Expressions provide text searching and replacement capabilities, similar to using the "Find & Replace" (F&R) operation in a text editor or word processor. However, most F&R capabilities only support searching for literals; when you search for the word "meet", you simply access those literal four character in sequence -- even if they're part of a longer phrase such as "meeting".
+
+Regular Expressions (Regex) are considerably more sophisticated because they search for _patterns_ in text rather than literal sequences. Regex will allow us to search for patterns such as, say, `"meet" as a standalone word` (which would ignore `"meeting"`), or `all four-letter words that start with "m" and end with "t"` (which would find other words such as `"meat"` or `"moot"`).
+
+# Why are Regular Expressions awesome?
+
+Regular Expressions allow for an unprecidented level of text analysis and manipulation that would be extremely difficult and/or laborious to achieve with literal sequences alone. Regular Expressions allow for highly customized patterns to be recognized, and then manipulated within a corpus.
+
+Regex are particularily useful in the realm of computer science, where programs frequently need to recognize and reformat text for various purposes. Complex string manipulations (such as reformatting HTML markup) can be extremely difficult or highly inacurate without the robust matching capabilities provided by Regex. Overall, Regex are a powerful tool for any programmer's utility belt.
+
 # Basic Matches
 
 /hello/
