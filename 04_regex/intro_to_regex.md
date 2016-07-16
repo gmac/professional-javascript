@@ -27,22 +27,6 @@ Regular Expressions (RegEx) are considerably more powerful because they search f
 I will [eat] with you on Tuesday at the eatery called Joe's [Eats].
 ```
 
-## Why are Regular Expressions terrifying?
-
-Today's complex Regular Expressions were introduced during the 1980's as part of the Perl language, and are notorious still today for their daunting illegibility. Take a phone number, for example:
-
-```javascript
-/(?:\d{1,3}[\.-]?)?\d{3}[\.-]?\d{3}[\.-]?\d{4}/g
-```
-
-**Matches all of the following phone number patterns:**
-- 123-555-555-5555
-- 12-555-555-5555
-- 1-555-555-5555
-- 555-555-5555
-- 555.555.5555
-- 5555555555
-
 ## Why are Regular Expressions awesome?
 
 Regular Expressions allow for an unprecidented level of text recognition and manipulation that would be extremely difficult or virtually impossible to achieve with literal sequence matching alone. Regex are particularily useful in the realm of computer science, where programs frequently need to recognize and reformat specialized text strings.
@@ -60,6 +44,22 @@ Regular Expressions allow for an unprecidented level of text recognition and man
 ```
 
 Overall, Regex are a powerful tool for any programmer's utility belt.
+
+## Why are Regular Expressions notorious?
+
+Modern regular expressions were introduced with the Perl language during the 1980's, and are notorious still today for their daunting illegibility. Take a phone number, for example:
+
+```javascript
+/(?:\d{1,3}[\.-]?)?\d{3}[\.-]?\d{3}[\.-]?\d{4}/g
+```
+
+**Matches all of the following phone number patterns:**
+- 123-555-555-5555
+- 12-555-555-5555
+- 1-555-555-5555
+- 555-555-5555
+- 555.555.5555
+- 5555555555
 
 ## Basic Matchers
 
