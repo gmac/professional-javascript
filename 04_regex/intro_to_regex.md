@@ -9,9 +9,24 @@
 
 ## What are Regular Expressions?
 
-Regular Expressions provide text searching and replacement capabilities, similar to using the "Find & Replace" (F&R) operation in a text editor or word processor. However, most F&R capabilities only support searching for literals; when you search for the word "meet", you simply access those literal four character in sequence -- even if they're part of a longer phrase such as "meeting".
+Regular Expressions provide text searching and replacement capabilities, similar to using the "Find & Replace" (F&R) operation in a text editor or word processor. However, most F&R capabilities only support searching for literals...
 
-Regular Expressions (Regex) are considerably more sophisticated because they search for _patterns_ in text rather than literal sequences. Regex will allow us to search for patterns such as, say, `"meet" as a standalone word` (which would ignore `"meeting"`), or `all four-letter words that start with "m" and end with "t"` (which would find other words such as `"meat"` or `"moot"`).
+**Literal sequence match: find `"meet"`**
+
+```
+I will [meet] you on Tuesday during the [meet]ing at Joe's Meats.
+```
+
+Regular Expressions (Regex) are considerably more sophisticated because they search for _patterns_ in text rather than literal sequences. Regex will allow us to search for patterns in text...
+
+**Pattern string match:**
+- Find `"meet"` as a standalone word (surrounded by spaces and period).
+- Find all four-letter words that start with `"m"` and end with `"t"`.
+- Allow either lowercase OR uppercase in matched words.
+
+```
+I will [meet] you on Tuesday during the meeting at Joe's [Meat]s.
+```
 
 # Why are Regular Expressions awesome?
 
@@ -24,6 +39,8 @@ Regex are particularily useful in the realm of computer science, where programs 
 /hello/
 
 "`hello` world"
+
+Friday is fry day at McDonald's today.
 
 ## Character Sets
 
