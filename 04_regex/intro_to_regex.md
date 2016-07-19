@@ -116,13 +116,13 @@ A RegEx may match against two or more alternative patterns:
 
 ### Reserved Characters
 
-RegEx reserves a set of characters for its own operations. The following characters are reserved by RegEx:
+RegExs reserve several characters for their own operations. The following characters are reserved by RegEx:
 
 ```
-$ * + . ( ) [ ] { } | /
+^ $ * + . ( ) [ ] { } | /
 ```
 
-If our search pattern includes a reserved character, then it must be escaped using `\` (forward slash):
+To include a reserved character in a search pattern, you must escape it using `\` (forward slash):
 
 ```javascript
 // "Costs $100 (USD)"
@@ -132,13 +132,13 @@ If our search pattern includes a reserved character, then it must be escaped usi
 
 ### Character Sets
 
-RegExs provide several built-in character classifications for recognizing common text patterns.
+RegExs provide several built-in character classifications for matching common text patterns.
 
-* `.`  Any single character.
+* `.`  Any single character (wild card).
 * `\s` Any space character.
 * `\S` Any non-space character.
-* `\d` Any digit.
-* `\D` Any non-digit.
+* `\d` Any digit (numbers 0-9).
+* `\D` Any non-digit (anything BUT numbers 0-9).
 * `\w` Any word character (matches letters, numbers, and underscore).
 * `\W` Any non-word character (anything BUT letters, numbers, and underscore).
 * `\b` Any word boundary (separators including spaces, commas, and periods).
@@ -149,25 +149,32 @@ Custom classes allow you to build your own character sets.
 
 * `[abc]` Positive character class (matches "a", "b", or "c").
 * `[^abc]` Negative character class (matches anything _except_ "a", "b", or "c").
-* `[a-z]` Character range (matches any lowercase letter from A to Z).
-* `[a-zA-Z]` Multiple ranges (matches uppercase and lowercase letters from A to Z).
+* `[a-z]` Character range (matches all lowercase letters from A to Z).
+* `[a-zA-Z]` Multiple ranges (matches all uppercase and lowercase letters from A to Z).
 
 ### Anchors
 
-These flags anchor a search pattern to the start or end of a line. Extremely useful!
+These flags anchor a search pattern to the start or end of a line of text. Extremely useful!
 
 * `^` Start of line (ex: `/^hello/` matches "hello world" but not "say hello").
 * `$` End of line (ex: `/hello$/` matches "say hello" but not "hello world").
 
 ### Repetitions
 
-These flags cause a pattern to be matched repeatedly, which can turn a single character match into many.
+These flags match a pattern repeatedly, turning a single character match into many.
 
 * `?` Match preceding pattern zero or one times (ex: `/cars?/` will match `"car"` or `"cars"`).
 * `*` Match preceding pattern zero or more times (ex: `/sou*p/` will match `"soup"` or `"sop"`).
-* `+` Match preceding pattern one or more times. (ex: `/zoo+m/` will match `"zoom"` or `"zoooooooom"`).
+* `+` Match preceding pattern one or more times (ex: `/zoo+m/` will match `"zoom"` or `"zoooooooom"`).
+* `{3}` Matches preceding pattern exactly N times (ex: `/bo{3}m/` will match `"booom"`).
+* `{1,3}` Matches preceding between N and O times (ex: `/bo{1,3}m/` will match `"bom"`, `"boom"`, or `"booom"`).
 
-One of the most common repitions you'll see in RegEx is `.*`. This is the universal matcher: it will match any character zero or more times... it will match _anything_! This is great for things like HTML tags:
+One of the most common repitions you'll see in RegEx is `.*`, the universal matcher. The dot-star pattern matches any character zero or more times... thus it will match literally _anything_!
+
+### Lazy Repition
+
+* `*?` Match zero or more of the preceding pattern, as few times as possible.
+* `+?` Match one or more of the preceding pattern, as few times as possible.
 
 ```javascript
 /<p>.*<\/p>/
@@ -180,11 +187,6 @@ HOWEVER!! Here's where we need to be careful. Repitions are _greedy_ by default,
 ```
 
 Our RegEx is greedy, so will attempt to match _as many characters as possible_ before matching the closing tag pattern. While we only want to capture `<p>Goodbye F&R</p>`, we will get both tags -- matched by the opening of the first tag and the closing of second tag. Not what we wanted!
-
-### Lazy Repition
-
-* `*?` Match zero or more of the preceding pattern, as few times as possible.
-* `+?` Match one or more of the preceding pattern, as few times as possible.
 
 Alternative to laziness:
 
