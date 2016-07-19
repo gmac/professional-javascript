@@ -80,6 +80,9 @@ The Battle of the Bottles
 
 99 bottles of beer on the wall, 99 bottles of beer.
 Take a few down, pass them around... 1 bottle of beer on the wall.
+
+How much wood would a woodchuck chuck if a woodchuck could chuck wood?
+About 700 pounds, according to Cornell University.
 ```
 
 ## Basic Matchers
@@ -164,15 +167,25 @@ These flags anchor a search pattern to the start or end of a line of text. Extre
 These flags match a pattern repeatedly, turning a single character match into many.
 
 * `?` Match preceding pattern zero or one times (ex: `/cars?/` will match `"car"` or `"cars"`).
-* `*` Match preceding pattern zero or more times (ex: `/sou*p/` will match `"soup"` or `"sop"`).
-* `+` Match preceding pattern one or more times (ex: `/zoo+m/` will match `"zoom"` or `"zoooooooom"`).
+* `*` Match preceding pattern zero or more times (ex: `/sou*p/` will match `"sop"`, `"soup"`, or `"souuuup"`).
+* `+` Match preceding pattern one or more times (ex: `/zo+m/` will match `"zom"`, `"zoom"`, or `"zoooooooom"`).
 * `{3}` Matches preceding pattern exactly N times (ex: `/bo{3}m/` will match `"booom"`).
-* `{1,3}` Matches preceding between N and O times (ex: `/bo{1,3}m/` will match `"bom"`, `"boom"`, or `"booom"`).
+* `{1,3}` Matches preceding between N and M times (ex: `/bo{1,3}m/` will match `"bom"`, `"boom"`, or `"booom"`).
 
-One of the most common repitions you'll see in RegEx is `.*`, the universal matcher. The dot-star pattern matches any character zero or more times... thus it will match literally _anything_!
+One of the most common repitions you'll see used in RegEx is the universal matcher pattern: `.*`. The dot-star pattern matches any character zero or more times... thus it will match literally _anything_!
 
-### Lazy Repition
+### Greedy vs. Lazy Repetition
 
+All repetitions are _greedy_ by default, meaning they will match _as many characters as possible_ before stopping. For example, let's try to match all text in parenthesis using the following corpus and regex pattern:
+
+```javascript
+"Greater DC includes Maryland (MD) and Virginia (NOVA)."
+/\(.+\)/g
+```
+
+Try that... the results are unexpected. Our RegEx matches from the first open-parenthesis all the way through to the final close-parenthesis. This is because the RegEx has greedily matched as many characters as possible while fulfilling the repition pattern. In fact, we'd like the pattern to match as _few_ characters as possible so that we capture each set of open/close parenthesis individually. To do that, we need to use _lazy repetition.
+
+**Lazy Repetition**
 * `*?` Match zero or more of the preceding pattern, as few times as possible.
 * `+?` Match one or more of the preceding pattern, as few times as possible.
 
@@ -192,11 +205,6 @@ Alternative to laziness:
 
 * `[^x]+` Greedy match with a negative endpoint.
 
-## Groups
+## Capture Groups
 
 * `()`
-
-## Alternation
-
-* `x|y`
-* `(x|y)`
