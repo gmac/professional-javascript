@@ -49,7 +49,7 @@ Regular Expressions allow for an unprecidented level of text recognition and man
 Modern regular expressions were introduced with the Perl language during the 1980's, and are notorious for their daunting illegibility.
 
 ```javascript
-/(?:\d{1,3}[\.-]?)?\d{3}[\.-]?\d{3}[\.-]?\d{4}/g
+/(\d{1,3}[\.-]?)?\d{3}[\.-]?\d{3}[\.-]?\d{4}/g
 ```
 
 Don't panic though... with time and practice, your eyes will train to read regular expressions, and you'll discover that they are an incredibly powerful tool.
