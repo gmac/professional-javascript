@@ -186,8 +186,10 @@ Groups are where RegEx starts getting REALLY powerful. With groupings, we can wr
 Consider the following example where we use a group to make the entire `http:` portion of a URL optional:
 
 **Match both URLs: `/(http:)?\/\/regexr\.com/`** 
-> http://regexr.com
-> //regex.com
+```
+http://regexr.com
+//regex.com
+```
 
 ## Matching Exercises
 
