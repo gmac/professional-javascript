@@ -179,8 +179,15 @@ Now for a fancy trick... Lazy repetition is slower than greediness because the R
 
 ## Groups
 
-* `()`
+Groups are where RegEx starts getting REALLY powerful. With groupings, we can write patterns inside of patterns. This makes individual RegEx operators even more powerful when they can operate on larger patterns.
 
+* `(...)` Parenthesis establishes a new group.
+
+Consider the following example where we use a group to make the entire `http:` portion of a URL optional:
+
+**Match both URLs: `/(http:)?\/\/regexr\.com/`** 
+> http://regexr.com
+> //regex.com
 
 ## Matching Exercises
 
@@ -188,6 +195,7 @@ Copy and paste the each of the following texts into RegExr, and enable the `glob
 
 **Match phone numbers:**
 ```
+1-555-555-5555
 555-555-5555
 555.555.5555
 5555555555
@@ -195,9 +203,9 @@ Copy and paste the each of the following texts into RegExr, and enable the `glob
 
 **Match URLs:**
 ```
-http://regex.com
-https://regex.com
-//regex.com
+http://regexr.com
+https://regexr.com
+//regexr.com
 ```
 
 **Match HTML Tags, capturing their text content in a group:**
@@ -208,6 +216,8 @@ https://regex.com
 ```
 
 ## Replacement
+
+So far, we've only done finding. RegEx becomes far more powerful when applied to dynamic replacement. Let's write a RegEx that finds all standalone instances of the word "wood", and swaps them for "ham":
 
 ```
 How much wood would a woodchuck chuck if a woodchuck could chuck wood?
