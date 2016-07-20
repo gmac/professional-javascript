@@ -31,7 +31,7 @@ I will [eat] with you on Tuesday at the eatery called Joe's [Eats].
 
 ## Why are Regular Expressions awesome?
 
-Regular Expressions allow for an unprecidented level of text recognition and manipulation that would be extremely difficult or virtually impossible to achieve with literal sequence matching alone. Regex are particularily useful in the realm of computer science, where programs frequently need to recognize and reformat specialized text strings.
+Regular Expressions allow for an unprecidented level of text recognition and manipulation that would be extremely difficult or virtually impossible to achieve with literal sequence matching alone. Regex are particularily useful in the realm of computer science, where programs frequently need to recognize and reformat specially-formatted text strings.
 
 **Get the header tag content:**
 ```html
@@ -46,26 +46,14 @@ Regular Expressions allow for an unprecidented level of text recognition and man
 /<h1[^>]*>(.*?)<\/h1>/g
 ```
 
-Overall, Regex are a powerful tool for any programmer's utility belt.
-
---
-
-## Why are Regular Expressions notorious?
-
-Modern regular expressions were introduced with the Perl language during the 1980's, and are notorious still today for their daunting illegibility.
-
-**Get any of these phone number patterns:**
-- 1-555-555-5555
-- 555-555-5555
-- 555.555.5555
-- 5555555555
+Modern regular expressions were introduced with the Perl language during the 1980's, and are notorious for their daunting illegibility.
 
 **RegEx:**
 ```javascript
 /(?:\d{1,3}[\.-]?)?\d{3}[\.-]?\d{3}[\.-]?\d{4}/g
 ```
 
-Don't panic... with time and practice, your eyes will train to read regular expressions.
+Don't panic though... with time and practice, your eyes will train to read regular expressions, and you'll discover that they are an incredibly powerful tool.
 
 --
 
@@ -80,9 +68,6 @@ The Battle of the Bottles
 
 99 bottles of beer on the wall, 99 bottles of beer.
 Take a few down, pass them around... 1 bottle of beer on the wall.
-
-How much wood would a woodchuck chuck if a woodchuck could chuck wood?
-About 700 pounds, according to Cornell University.
 ```
 
 ## Basic Matchers
@@ -201,10 +186,44 @@ HOWEVER!! Here's where we need to be careful. Repitions are _greedy_ by default,
 
 Our RegEx is greedy, so will attempt to match _as many characters as possible_ before matching the closing tag pattern. While we only want to capture `<p>Goodbye F&R</p>`, we will get both tags -- matched by the opening of the first tag and the closing of second tag. Not what we wanted!
 
-Alternative to laziness:
+**Alternative to Laziness**
 
-* `[^x]+` Greedy match with a negative endpoint.
+_Advanced trick: lazy repetition is slow because the RegEx algorithm must perform redundant work. We can frequently skip lazy repetition by repeating on a class that omits our desired endpoint (ie: repeat on anything that is NOT our endpoint)._
 
-## Capture Groups
+* `[^x]*` Greedy match with a negative endpoint.
+
+## Groups
 
 * `()`
+
+
+## Matching Exercises
+
+Copy and paste the each of the following texts into RegExr, and enable the `global` and `multiline` flags. Then write a regular expression that matches all lines of the text.
+
+**Match phone numbers:**
+```
+555-555-5555
+555.555.5555
+5555555555
+```
+
+**Match URLs:**
+```
+http://regex.com
+https://regex.com
+//regex.com
+```
+
+**Match HTML Tags, capturing their text content in a group:**
+```
+<p>hello world</p>
+<p id="tricky">hello world</p>
+<p id="tricky" class="tricky">hello world</p>
+```
+
+## Replacement
+
+```
+How much wood would a woodchuck chuck if a woodchuck could chuck wood?
+```
