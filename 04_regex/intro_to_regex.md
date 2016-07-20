@@ -12,11 +12,9 @@
 Regular Expressions provide text searching and replacement capabilities, similar to using the "Find & Replace" (F&R) operation in a word processor. However, most common F&Rs only search for a literal sequence...
 
 **Find `"eat":`**
-
-```javascript
-"eat"
-// I will [eat] with you on Tuesday at the local [eat]ery, Joe's Eats.
-```
+>
+> I will `eat` with you on Tuesday at the local `eat`ery, Joe's Eats.
+>
 
 Regular Expressions (RegEx) are considerably more powerful because they search for _patterns_ in text, which allows for contextual awareness...
 
@@ -27,10 +25,10 @@ Regular Expressions (RegEx) are considerably more powerful because they search f
 
 ```javascript
 /eats?/i
-// I will [eat] with you on Tuesday at the local eatery, Joe's [Eats].
 ```
-
---
+>
+> I will `eat` with you on Tuesday at the local eatery, Joe's `Eats`.
+>
 
 ## Why are Regular Expressions awesome?
 
