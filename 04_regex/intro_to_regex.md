@@ -9,22 +9,25 @@
 
 ## What are Regular Expressions?
 
-Regular Expressions provide text searching and replacement capabilities, similar to using the "Find & Replace" (F&R) operation in a word processor. However, most common F&Rs only search for literal sequences...
+Regular Expressions provide text searching and replacement capabilities, similar to using the "Find & Replace" (F&R) operation in a word processor. However, most common F&Rs only search for a literal sequence...
 
-- Find `"eat"`.
+**Find `"eat":`**
 
-```
-I will [eat] with you on Tuesday at the [eat]ery called Joe's Eats.
+```javascript
+"eat"
+// I will [eat] with you on Tuesday at the local [eat]ery, Joe's Eats.
 ```
 
 Regular Expressions (RegEx) are considerably more powerful because they search for _patterns_ in text, which allows for contextual awareness...
 
+**Pattern:`**
 - Find `"eat"` as a standalone word (surrounded by spaces and/or periods).
 - Allow the standalone word to be plural (may end in "s").
 - Allow the standalone word to have both upper and lowercase letters.
 
-```
-I will [eat] with you on Tuesday at the eatery called Joe's [Eats].
+```javascript
+/eats?/i
+// I will [eat] with you on Tuesday at the local eatery, Joe's [Eats].
 ```
 
 --
