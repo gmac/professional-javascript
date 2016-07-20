@@ -159,28 +159,17 @@ One of the most common repitions you'll see used in RegEx is the universal match
 
 All repetitions are _greedy_ by default, meaning they will match _as many characters as possible_ before stopping. For example, let's try to match all text in parenthesis using the following corpus and regex pattern:
 
-```javascript
-"Greater DC includes Maryland (MD) and Virginia (NOVA)."
-/\(.+\)/g
-```
+**Find _greedy_ pattern: `/\(.+\)/g`**
+> Greater DC includes Maryland `(MD) and Virginia (NOVA)`."
 
-Try that... the results are unexpected. Our RegEx matches from the first open-parenthesis all the way through to the final close-parenthesis. This is because the RegEx has greedily matched as many characters as possible while fulfilling the repition pattern. In fact, we'd like the pattern to match as _few_ characters as possible so that we capture each set of open/close parenthesis individually. To do that, we need to use _lazy repetition.
+Hmm... the results are unexpected. Our RegEx matches from the first open-parenthesis all the way through to the final close-parenthesis. This is because the RegEx has greedily matched as many characters as possible while fulfilling the repetition pattern. Actually though, we'd like the pattern to match as _few_ characters as possible so that we capture each set of open/close parenthesis individually. To do that, we need _lazy repetition_.
 
 **Lazy Repetition**
 * `*?` Match zero or more of the preceding pattern, as few times as possible.
 * `+?` Match one or more of the preceding pattern, as few times as possible.
 
-```javascript
-/<p>.*<\/p>/
-```
-
-HOWEVER!! Here's where we need to be careful. Repitions are _greedy_ by default, meaning they will match as *many* characters as possible. Consider the following text:
-
-```html
-<p>Goodbye F&R</p><p>Hello RegEx!</p>
-```
-
-Our RegEx is greedy, so will attempt to match _as many characters as possible_ before matching the closing tag pattern. While we only want to capture `<p>Goodbye F&R</p>`, we will get both tags -- matched by the opening of the first tag and the closing of second tag. Not what we wanted!
+**Find _lazy_ pattern: `/\(.+?\)/g`**
+> Greater DC includes Maryland `(MD)` and Virginia `(NOVA)`."
 
 **Alternative to Laziness**
 
