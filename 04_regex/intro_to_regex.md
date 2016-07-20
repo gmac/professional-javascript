@@ -157,21 +157,20 @@ One of the most common repitions you'll see used in RegEx is the universal match
 
 ### Greedy vs. Lazy Repetition
 
-All repetitions are _greedy_ by default, meaning they will match _as many characters as possible_ before stopping. For example, let's try to match all text in parenthesis using the following corpus and regex pattern:
+All repetitions are _greedy_ by default, meaning they will match as many characters as possible before stopping. For example, let's try to match all texts in parenthesis in the following example:
 
 **Find _greedy_ pattern: `/\(.+\)/g`**
 > Greater DC includes Maryland `(MD) and Virginia (NOVA)`."
 
-Hmm... the results are unexpected. Our RegEx matches from the first open-parenthesis all the way through to the final close-parenthesis. This is because the RegEx has greedily matched as many characters as possible while fulfilling the repetition pattern. Actually though, we'd like the pattern to match as _few_ characters as possible so that we capture each set of open/close parenthesis individually. To do that, we need _lazy repetition_.
+The results are unexpected. Our RegEx matches from the first opening parenthesis all the way through to the final closing parenthesis. This is because the RegEx has greedily matched as many characters as possible while fulfilling the repetition pattern. Actually though, we'd like the pattern to match as _few_ characters as possible so that we capture each set of open/close parenthesis individually. To do that, we need _lazy repetition_. These flags match a pattern repeatedly as few times as possible:
 
-**Lazy Repetition**
 * `*?` Match zero or more of the preceding pattern, as few times as possible.
 * `+?` Match one or more of the preceding pattern, as few times as possible.
 
 **Find _lazy_ pattern: `/\(.+?\)/g`**
 > Greater DC includes Maryland `(MD)` and Virginia `(NOVA)`."
 
-**Alternative to Laziness**
+**The Alternative to Laziness**
 
 _Advanced trick: lazy repetition is slow because the RegEx algorithm must perform redundant work. We can frequently skip lazy repetition by repeating on a class that omits our desired endpoint (ie: repeat on anything that is NOT our endpoint)._
 
