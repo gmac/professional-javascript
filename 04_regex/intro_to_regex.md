@@ -28,9 +28,9 @@ Regular Expressions (RegEx) are considerably more powerful because they search f
 
 ## Why are Regular Expressions awesome?
 
-Regular Expressions allow for an unprecidented level of text recognition and manipulation that would be extremely difficult or virtually impossible to achieve with literal sequence matching alone. Regex are particularily useful in the realm of computer science, where programs frequently need to recognize and reformat specially-formatted text strings.
+Regular Expressions allow for an unprecidented level of text manipulation that would be extremely difficult (or virtually impossible) to achieve with literal sequences alone. Regexs are particularily useful in the realm of programming, where we frequently need to read specially-formatted text strings as data.
 
-**Get the header tag content:**
+**Find the text of the header tag:**
 ```html
 <div id="widget">
   <h1 class="tricky">Get this headline text!</h1>
@@ -38,7 +38,7 @@ Regular Expressions allow for an unprecidented level of text recognition and man
 </div>
 ```
 
-**RegEx:**
+**Okay, here's a RegEx:**
 ```javascript
 /<h1[^>]*>(.*?)<\/h1>/g
 ```
@@ -49,15 +49,15 @@ Modern regular expressions were introduced with the Perl language during the 198
 /(\d{1,3}[\.-]?)?\d{3}[\.-]?\d{3}[\.-]?\d{4}/g
 ```
 
-Don't panic though... with time and practice, your eyes will train to read regular expressions, and you'll discover that they are an incredibly powerful tool.
+Don't panic! With time and practice, your eyes will train to read regular expressions... and you'll discover that they are an invaluable tool.
 
 --
 
-## Get Started
+## Let's Get Started!
 
-Go to [http://www.regexr.com](http://www.regexr.com). This is a very powerful online Regular Expression workbench, perfect for learning, testing, or refining RegEx patterns. Get familiar with these workbench tools. They are your friends!
+Go to [http://www.regexr.com](http://www.regexr.com). This is a handy online Regular Expressions workbench, perfect for learning, testing, and refining RegEx patterns. Workbench tools are your friends!
 
-We'll use the following text as out first search corpus:
+Copy and paste the following text corpus into RegExr:
 
 ```
 The Battle of the Bottles
