@@ -170,11 +170,12 @@ The results are unexpected. Our RegEx matches from the first opening parenthesis
 **Find _lazy_ pattern: `/\(.+?\)/g`**
 > Greater DC includes Maryland `(MD)` and Virginia `(NOVA)`."
 
-**The Alternative to Laziness**
+_Advanced trick: lazy repetition is slow because the RegEx algorithm must perform redundant work. We can frequently skip lazy repetition by repeating on a character class that omits our desired endpoint:_
 
-_Advanced trick: lazy repetition is slow because the RegEx algorithm must perform redundant work. We can frequently skip lazy repetition by repeating on a class that omits our desired endpoint (ie: repeat on anything that is NOT our endpoint)._
+* `[^x]*` Greedy repetition with a negative matcher.
 
-* `[^x]*` Greedy match with a negative endpoint.
+**Find _greedy_ pattern: `/\([^\)]+\)/g`**
+> Greater DC includes Maryland `(MD)` and Virginia `(NOVA)`."
 
 ## Groups
 
